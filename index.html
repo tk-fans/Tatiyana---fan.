@@ -1,162 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Татьяна Куртукова - Фан-страница</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* شێوازی دیزاینەکە (CSS) */
         body {
-    background-image: url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
-    background-size: cover; /* بۆ ئەوەی وێنەکە هەموو شاشەکە بگرێتەوە */
-    background-attachment: fixed; /* بۆ ئەوەی وێنەکە لەگەڵ سکرۆڵ نەجوڵێت */
-    background-position: center;
-        }
-        
-        
-        /* بەشی سەرەوە (هیدەر) */
-        header {
-            /* لێرەدا دەتوانیت لینکی وێنەیەکی 4K ی تاتیانا دابنێیت بۆ باکگراوەندەکە */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1516280440503-625ee2d242ef?q=80&w=3840&auto=format&fit=crop') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 5rem;
-            margin-bottom: 10px;
-            color: #ffcccc; /* ڕەنگێکی سووری کاڵ کە لەگەڵ ستایلی فۆلکلۆری دەگونجێت */
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-        
-        p.subtitle {
-            font-size: 1.8rem;
-            font-style: italic;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 3rem;
-            color: #ff4d4d;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #ff4d4d;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-center {
-            text-align: center;
-        }
-
-        .about p {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-            color: #cccccc;
-        }
-        
-
-        /* بەشی خوارەوە (فوتەر) */
-        footer {
-            background-color: #0d0d0d;
-            padding: 40px;
-            text-align: center;
-            margin-top: 50px;
-            border-top: 1px solid #333;
-        }
-
-        .social-links a {
+            /* باکگراوەندە سەرەکییەکەت */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             color: white;
-            margin: 0 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background: rgba(26, 5, 0, 0.95);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #d4af37;
+            margin: 0 15px;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
             transition: color 0.3s;
         }
 
-        .social-links a:hover {
+        nav a:hover {
             color: #ff4d4d;
+        }
+
+        .main-content {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #d4af37;
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ffcccc;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #eeeeee;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #d4af37;
+        }
+
+        footer {
+            background: transparent;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <nav style="background: rgba(26, 5, 0, 0.9); padding: 15px; text-align: center; border-bottom: 2px solid #d4af37;">
-    <a href="index.html" style="color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold;">Главная</a>
-    <a href="gallery.html" style="color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold;">Галерия</a>
-    <a href="news.html" style="color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold;">Новости</a>
-    <a href="videos.html" style="color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold;">Видео</a>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="news.html">Новости</a>
+        <a href="videos.html">Видео</a>
     </nav>
 
-    <main style="padding: 50px 20px; text-align: center;">
-    <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid #d4af37; object-fit: cover; margin-bottom: 20px;">
-    
-    <h1 style="color: #ccc; font-style: italic;">Добро пожаловать на фан-сайт Татьяны Куртуковой</h2>
-    
-    <p style="max-width: 600px; margin: 20px auto; line-height: 1.6; color: #eee;">
-        Этот сайт посвящен творчеству и деятельности российской артистки Татьяны Куртуковой. Для просмотра фото и видео используйте верхнее меню.
-    </p>
-    </main>
-
-    <header>
+    <div class="main-content">
+        
+        <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" class="profile-img" alt="Татьяна Куртукова">
+        
         <h1>Татьяна Куртукова</h1>
-        <p class="subtitle">Официальная Фан-страница | Лучшая народная музыка</p>
-    </header>
-
-    <div class="container section-center">
-        <section class="about">
-            <h2>О Татьяне</h2>
+        <p class="subtitle">Добро пожаловать на фан-сайт</p>
+        
+        <div class="about-text">
             <p>
                 Татьяна Куртукова — невероятно талантливая исполнительница русской народной музыки. 
-                Её искренний голос и любовь к культуре передают всю красоту и глубину русской души. 
-                Добро пожаловать на главную фан-страницу, где собраны лучшие моменты её творчества!
+                Её искренний голос и любовь к культуре передают всю красоту и глубину русской души.
             </p>
-        </section>
+            <p style="margin-top: 15px; color: #d4af37;">
+                Этот сайт посвящен её творчеству. Для просмотра фото, видео и новостей используйте верхнее меню.
+            </p>
+        </div>
 
-        <section class="gallery">
-            <h2>Галерея (4K Качество)</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://i.postimg.cc/d1qHkxXR/4fa48bc2582d14323e73800947531ff0-1000x1000x1.png" alt="Татьяна Куртукова">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.postimg.cc/1RG2zDdQ/IMG-20251111-163832-920.jpg" alt="Татьяна Куртукова">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.postimg.cc/446q3p0Z/na2z-i-GYz9I.jpg" alt="Татьяна Куртукова">
-                </div> 
-                    <img src="https://i.postimg.cc/CKW89BCj/maxresdefault.jpg" alt="Татьяна Куртукова">
-            </div>
-        </section>
     </div>
 
-<footer style="background: transparent; padding: 40px 20px; text-align: center;">
-    <div class="social-links" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
-        
-        <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; text-decoration: none; transition: 0.3s;">
-            <i class="fab fa-instagram"></i>
-        </a>
-
-        <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; text-decoration: none; transition: 0.3s;">
-            <i class="fab fa-youtube"></i>
-        </a>
-        
-    </div>
-    <p style="color: #d4af37; font-family: sans-serif; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
-</footer>
-    
+    <footer>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <p style="color: #d4af37; font-family: sans-serif; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
 
 </body>
 </html>
