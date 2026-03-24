@@ -3,30 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Татьяна Куртукова - لاپەڕەی نوێ</title>
+    <title>Галерея | </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            /* لێرە هەمان کۆدی باکگراوەندەکەت دابنێ */
-            background-image: url("لینکی_باکگراوەندەکەت");
+            /* https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
             color: white;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
             padding: 0;
         }
+
         nav {
-            background: rgba(26, 5, 0, 0.9);
+            background: rgba(26, 5, 0, 0.95);
             padding: 15px;
             text-align: center;
             border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+
         nav a {
             color: #d4af37;
-            margin: 0 15px;
+            margin: 0 10px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .gallery-container {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image-card {
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.03);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        footer {
+            background: transparent;
+            padding: 40px;
+            text-align: center;
         }
     </style>
 </head>
@@ -39,9 +84,38 @@
         <a href="videos.html">Видео</a>
     </nav>
 
-    <div style="padding: 50px; text-align: center;">
-        <h1>بەم زووانە لێرە ناوەڕۆک زیاد دەکەین...</h1>
+    <div class="gallery-container">
+        <h1 style="color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Галерея</h1>
+        <p style="margin-bottom: 40px; color: #ccc;">Коллекция красивых образов Татьяны Куртуковой</p>
+
+        <div class="gallery-grid">
+            
+            <div class="image-card">
+                <img src="https://i.postimg.cc/d1qHkxXR/4fa48bc2582d14323e73800947531ff0-1000x1000x1.png" alt="Tatyana Photo 1">
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.postimg.cc/CKW89BCj/maxresdefault.jpg" alt="Tatyana Photo 2">
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.postimg.cc/1RG2zDdQ/IMG-20251111-163832-920.jpg" alt="Tatyana Photo 3">
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.postimg.cc/446q3p0Z/na2z-i-GYz9I.jpg" alt="Tatyana Photo 4">
+            </div>
+
+        </div>
     </div>
+
+    <footer>
+        <div style="margin-bottom: 15px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 30px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="color: #d4af37; font-size: 13px;">&copy; 2026 Tatiyana Kurtukova Fan Community</p>
+    </footer>
 
 </body>
 </html>
