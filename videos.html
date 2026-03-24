@@ -1,32 +1,116 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Татьяна Куртукова - لاپەڕەی نوێ</title>
+    <title>Видео | ڤیدیۆکانی تاتیانا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         body {
-            /* لێرە هەمان کۆدی باکگراوەندەکەت دابنێ */
-            background-image: url("لینکی_باکگراوەندەکەت");
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
             color: white;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
+        
         nav {
-            background: rgba(26, 5, 0, 0.9);
+            background: rgba(26, 5, 0, 0.95);
             padding: 15px;
             text-align: center;
             border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+
         nav a {
             color: #d4af37;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff4d4d;
+        }
+
+        .main-content {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 50px;
+        }
+
+        /* ستایلی چوارچێوەی ڤیدیۆکان */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+        }
+
+        .video-card h3 {
+            color: #d4af37;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* ئەمە وا دەکات ڤیدیۆکە لەسەر مۆبایل تێکنەچێت */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* قەبارەی سینەمایی 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            background: transparent;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -34,15 +118,52 @@
 
     <nav>
         <a href="index.html">Главная</a>
-        <a href="gallery.html">Галерия</a>
+        <a href="gallery.html">Галерея</a>
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a>
     </nav>
 
-    <div style="padding: 50px; text-align: center;">
-        <h1>بەم زووانە لێرە ناوەڕۆک زیاد دەکەین...</h1>
+    <div class="main-content">
+        <h1>Видео</h1>
+        <p class="subtitle">Смотрите здесь самые свежие видео и записи концертов Татьяны Куртуковой.</p>
+
+        <div class="video-grid">
+            
+            <div class="video-card">
+                <h3>Матушка</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/rP_S13rXid0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <h3>Ромашка</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/5-p9-UOf4oU" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <h3>Новое видео</h3>
+                <div class="video-container">
+                    <iframe src="لێرە_لینکی_ڤیدیۆی_سێیەم_دابنێ" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <footer>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <p style="color: #d4af37; font-family: sans-serif; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
 
 </body>
 </html>
-
