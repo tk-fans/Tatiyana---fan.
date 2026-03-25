@@ -61,7 +61,24 @@
             opacity: 0;
             pointer-events: none;
         }
-        /* --- کۆتایی لۆدینگ --- */
+
+        /* --- ئیفێکتە زیندووەکان (Animations) --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatTitle {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
 
         /* Smooth Scrolling */
         html {
@@ -81,7 +98,6 @@
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
-        /* گۆڕینی ماوس بۆ لینک و دوگمەکان */
         a, button, .image-card {
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
         }
@@ -102,11 +118,25 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff4d4d;
         }
 
         .gallery-container {
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h1 {
+            color: #d4af37;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            font-size: 3rem;
+            animation: floatTitle 3s ease-in-out infinite;
         }
 
         #photo-count {
@@ -123,7 +153,7 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -133,11 +163,14 @@
             border-radius: 12px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .image-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            border-color: #ff4d4d;
         }
 
         .image-card img {
@@ -145,9 +178,14 @@
             height: 400px;
             object-fit: cover;
             display: block;
+            transition: filter 0.3s ease;
         }
 
-        /* Back to Top Button Style */
+        .image-card:hover img {
+            filter: brightness(1.1);
+        }
+
+        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -191,7 +229,7 @@
             max-height: 85vh;
             border: 3px solid #d4af37;
             border-radius: 10px;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
         }
 
         .close-btn {
@@ -201,7 +239,10 @@
             color: #d4af37;
             font-size: 50px;
             cursor: pointer;
+            transition: 0.3s;
         }
+
+        .close-btn:hover { color: #ff4d4d; }
 
         .prev, .next {
             position: absolute;
@@ -213,8 +254,10 @@
             cursor: pointer;
             padding: 20px;
             text-decoration: none;
+            transition: 0.3s;
         }
 
+        .prev:hover, .next:hover { color: #fff; transform: translateY(-50%) scale(1.2); }
         .prev { left: 20px; }
         .next { right: 20px; }
 
@@ -239,7 +282,7 @@
     </nav>
 
     <div class="gallery-container">
-        <h1 style="color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 10px;">Галерея</h1>
+        <h1>Галерея</h1>
         <p id="photo-count">Всего фото: ...</p>
         
         <div class="gallery-grid">
@@ -322,8 +365,8 @@
 
     <footer>
         <div style="margin-bottom: 15px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 30px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; margin-right: 20px; transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
         </div>
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
             <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
