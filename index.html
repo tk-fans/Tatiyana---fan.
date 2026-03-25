@@ -68,7 +68,10 @@
             border-radius: 20px; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap;
             text-align: left; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .bio-image-square { flex: 1; min-width: 250px; text-align: center; position: sticky; top: 100px; }
+        
+        /* لابردنی position: sticky بۆ ئەوەی تێکست نەچێتە ژێری */
+        .bio-image-square { flex: 1; min-width: 250px; text-align: center; } 
+        
         .bio-image-square img {
             width: 100%; max-width: 280px; border-radius: 10px;
             border: 2px solid #d4af37;
@@ -89,7 +92,6 @@
 
     <nav>
         <a href="index.html">Главная</a>
-        <a href="#bio-anchor">Биография</a>
         <a href="gallery.html">Галерея</a>
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a>
