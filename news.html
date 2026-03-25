@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- Стили для анимации загрузки (Loading) --- */
+        /* --- لۆجیکی لۆدینگ --- */
         #loader-wrapper {
             position: fixed;
             top: 0;
@@ -62,9 +62,26 @@
             opacity: 0;
             pointer-events: none;
         }
-        /* --- Конец стилей загрузки --- */
 
-        /* 1. Smooth Scroll */
+        /* --- ئیفێکتە زیندووەکان (Animations) --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatTitle {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -78,7 +95,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            /* 2. Custom Cursor */
+            /* Custom Cursor */
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
@@ -108,9 +125,10 @@
         nav a:hover { color: #ff4d4d; }
 
         .main-content {
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 1000px;
             margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
         }
 
         h1 {
@@ -118,7 +136,8 @@
             font-size: 3rem;
             color: #d4af37;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            animation: floatTitle 3s ease-in-out infinite;
         }
 
         .news-card {
@@ -126,9 +145,16 @@
             background: rgba(0, 0, 0, 0.85);
             border: 1px solid #d4af37;
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             overflow: hidden;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            border-color: #ff4d4d;
         }
 
         .news-image {
@@ -136,17 +162,23 @@
             min-width: 320px;
             max-width: 350px;
             border-right: 1px solid #d4af37;
+            overflow: hidden;
         }
 
         .news-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
         }
 
         .news-content {
             flex: 2;
-            padding: 25px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
         }
@@ -154,25 +186,31 @@
         .news-date {
             background: #d4af37;
             color: black;
-            padding: 3px 12px;
-            border-radius: 15px;
+            padding: 4px 15px;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: bold;
             align-self: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
         }
 
         .news-card h2 {
             color: #ffcccc;
             margin: 0 0 15px 0;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+
+        .news-card:hover h2 {
+            color: #fff;
         }
 
         .news-card p {
-            line-height: 1.7;
+            line-height: 1.8;
             color: #eee;
-            font-size: 1rem;
-            margin-bottom: 15px;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
             text-align: left;
             white-space: pre-line;
         }
@@ -204,8 +242,8 @@
             margin-top: auto;
             font-style: italic;
             color: #d4af37;
-            font-size: 0.85rem;
-            padding-top: 10px;
+            font-size: 0.9rem;
+            padding-top: 15px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
@@ -262,19 +300,23 @@
     </button>
 
     <footer>
-        <div style="margin-bottom: 15px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 30px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fab fa-youtube"></i>
+            </a> 
         </div>
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
             <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
             <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
         </div>
-        <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="color: #d4af37; font-size: 14px; margin-top: 20px; font-family: sans-serif;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
-        // Скрытие загрузчика после полной загрузки страницы
+        // لۆجیکی لادانی لۆدینگ
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
             setTimeout(() => {
