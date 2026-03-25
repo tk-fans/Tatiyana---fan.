@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Помощник — Татьяна Куртукова</title>
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
@@ -38,15 +39,15 @@
         .input-area input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; background: #000; color: #fff; outline: none; }
         .input-area button { padding: 0 25px; background: #d4af37; color: #1a0500; border: none; border-radius: 12px; cursor: pointer; }
 
-        /* --- لێرەدا تیدۆ بە تەواوی دەخنکێنین --- */
-        #tidio-chat, #tidio-chat-iframe, .tidio-chat-widget, iframe[title*="Tidio"], .tidio-1p6f6v8 {
+        /* شاردنەوەی توند بۆ تیدۆ */
+        #tidio-chat, #tidio-chat-iframe, .tidio-chat-widget, iframe[title*="Tidio"] {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
             width: 0 !important;
             height: 0 !important;
             position: absolute !important;
-            top: -9999px !important; /* فڕێی دەدەینە دەرەوەی شاشە */
+            top: -9999px !important;
             pointer-events: none !important;
         }
     </style>
@@ -69,7 +70,7 @@
             <h1 style="color: #d4af37; margin: 0 0 10px 0; font-size: 1.6rem;">Tatyana AI Bot</h1>
         </div>
         <div id="chat-box">
-            <div class="message bot-msg">Привет! 👋 Я слушаю. / Hello! I'm listening. / سڵاو! چۆن یارمەتیت بدەم؟</div>
+            <div class="message bot-msg">Привет! 👋 Я слушаю. Чем могу помочь?</div>
         </div>
         <div class="input-area">
             <input type="text" id="userInput" placeholder="Напишите сообщение...">
@@ -80,13 +81,11 @@
     <script src="//code.tidio.co/kxd4uklm8kp3mcqbg6ubzntmcmat1kme.js" async></script>
 
     <script>
-        // فەنکشنی هەمیشەیی بۆ شاردنەوە
         function killTidio() {
             const tidio = document.getElementById('tidio-chat-iframe') || document.querySelector('iframe[title*="Tidio"]');
             if (tidio) {
-                tidio.style.display = 'none';
-                tidio.style.opacity = '0';
-                tidio.style.width = '0';
+                tidio.style.setProperty("display", "none", "important");
+                tidio.style.setProperty("visibility", "hidden", "important");
             }
             if (window.tidioChatApi) {
                 window.tidioChatApi.hide();
@@ -99,11 +98,10 @@
                 const chatBox = document.getElementById("chat-box");
                 chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
-                killTidio();
+                setTimeout(killTidio, 100);
             });
         };
 
-        // هەموو نیو چرکەیەک پشکنین بکە (زۆر خێرا)
         setInterval(killTidio, 500);
 
         function sendMessage() {
@@ -117,10 +115,11 @@
             inputField.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // ناردنی نامە بە فێڵ (بەبێ کردنەوەی پەنجەرە)
-            window.tidioChatApi.messageFromVisitor(message);
+            // ناردنی نامە
+            window.tidioChatApi.send(message);
             
-            setTimeout(killTidio, 50);
+            // یەکسەر شاردنەوەی پەنجەرەکە
+            setTimeout(killTidio, 10);
         }
 
         document.getElementById("userInput").addEventListener("keypress", (e) => {
