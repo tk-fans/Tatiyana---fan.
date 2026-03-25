@@ -3,32 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tatyana AI Bot</title>
-    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <title>AI Bot — Скоро будет</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
             background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover; background-attachment: fixed; background-position: center;
-            color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px;
+            color: white; font-family: 'Segoe UI', sans-serif; height: 100vh; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        nav { text-align: center; margin-bottom: 20px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; }
-        nav a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; transition: 0.3s; }
+        nav { position: fixed; top: 20px; text-align: center; width: 100%; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
         nav a:hover { color: #d4af37; }
-        .chat-container { 
-            max-width: 600px; margin: 20px auto; background: rgba(26, 5, 0, 0.95); 
-            border: 2px solid #d4af37; border-radius: 20px; padding: 30px; height: 70vh; display: flex; flex-direction: column;
-        }
-        #chat-box { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; padding-bottom: 10px; }
-        #chat-box::-webkit-scrollbar { width: 5px; }
-        #chat-box::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
-        .message { padding: 12px 18px; border-radius: 15px; max-width: 85%; line-height: 1.5; font-size: 1rem; }
-        .bot-msg { background: rgba(212, 175, 55, 0.2); border-left: 4px solid #d4af37; align-self: flex-start; color: #f0f0f0; }
-        .user-msg { background: rgba(255, 255, 255, 0.1); border-right: 4px solid #aaa; align-self: flex-end; color: #fff; }
-        .input-area { display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.3); padding-top: 15px; }
-        input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; background: #000; color: #fff; outline: none; }
-        button { padding: 0 25px; background: #d4af37; border: none; border-radius: 12px; cursor: pointer; color: #1a0500; font-weight: bold; }
-        .status { font-size: 12px; color: #d4af37; margin-top: 5px; display: none; text-align: center; }
+        .container { text-align: center; background: rgba(0,0,0,0.7); padding: 40px; border-radius: 20px; border: 1px solid #d4af37; }
+        h1 { color: #d4af37; font-size: 2rem; }
+        p { font-size: 1.2rem; color: #ccc; }
     </style>
 </head>
 <body>
@@ -40,64 +28,12 @@
         <a href="videos.html">Видео</a>
     </nav>
 
-    <div class="chat-container">
-        <div style="text-align: center; margin-bottom: 15px;">
-            <i class="fas fa-robot" style="font-size: 35px; color: #d4af37;"></i>
-            <h2 style="color: #d4af37; margin: 5px 0;">Tatyana AI</h2>
-        </div>
-        <div id="chat-box">
-            <div class="message bot-msg">Привет! Я помощник Татьяны Куртуковой. Чем могу помочь? / سڵاو! من یاریدەدەری تاتیانا کورتوکۆڤام. چۆن یارمەتیت بدەم؟</div>
-        </div>
-        <div id="status" class="status">Tatyana AI печатает...</div>
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Напишите сообщение...">
-            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
+    <div class="container">
+        <i class="fas fa-tools" style="font-size: 60px; color: #d4af37; margin-bottom: 20px;"></i>
+        <h1>Раздел в разработке</h1>
+        <p>Наш AI Bot скоро вернется с новыми возможностями!</p>
+        <p style="font-size: 0.9rem;">ئەم بەشە لە ژێر چاکسازیدایە، بەم زووانە بە شێوازێکی باشتر دەگەڕێتەوە.</p>
     </div>
 
-    <script>
-        const API_KEY = "AIzaSyBSTEZWTyfc25WJU6zTxoP4W7cEWpuugYs"; 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-
-        async function sendMessage() {
-            const inputField = document.getElementById("userInput");
-            const chatBox = document.getElementById("chat-box");
-            const statusIndicator = document.getElementById("status");
-            const userText = inputField.value.trim();
-
-            if (!userText) return;
-
-            chatBox.innerHTML += `<div class="message user-msg">${userText}</div>`;
-            inputField.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
-            statusIndicator.style.display = "block";
-
-            try {
-                const response = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        contents: [{ 
-                            parts: [{ text: "Ты — официальный ИИ-помощник Татьяны Куртуковой. Отвечай вежливо на русском или курдском языках. Твой ответ на это сообщение: " + userText }] 
-                        }]
-                    })
-                });
-
-                const data = await response.json();
-                const botReply = data.candidates[0].content.parts[0].text;
-
-                chatBox.innerHTML += `<div class="message bot-msg">${botReply}</div>`;
-            } catch (error) {
-                chatBox.innerHTML += `<div class="message bot-msg">Извините, произошла ошибка подключения. تەڵەیەک لە پەیوەندی دروست بوو.</div>`;
-            }
-
-            statusIndicator.style.display = "none";
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        document.getElementById("userInput").addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-    </script>
 </body>
 </html>
