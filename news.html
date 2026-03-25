@@ -61,17 +61,17 @@
             border-radius: 15px; margin-bottom: 40px; overflow: hidden; transition: 0.4s;
         }
 
-        /* --- Telegram Section (Auto-feed Timeline) --- */
+        /* --- Telegram Section (Fixed View) --- */
         .telegram-feed {
-            display: none; background: rgba(0, 0, 0, 0.5); padding: 20px; 
+            display: none; background: rgba(255, 255, 255, 0.05); padding: 10px; 
             border-radius: 20px; border: 1px solid #24A1DE; margin-top: 10px;
         }
-        .tg-timeline-container {
+        .tg-frame-container {
             width: 100%;
-            height: 800px; /* بەرزییەکەی بۆ ئەوەی پۆستی زۆر بگرێت */
+            height: 700px;
             overflow: hidden;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            background: #fff; /* سپی بێت تا پۆستەکان باش دیار بن */
         }
 
         .news-image { flex: 1; min-width: 320px; max-width: 350px; border-right: 1px solid #d4af37; }
@@ -130,19 +130,20 @@
         </div>
 
         <div id="telegram-feed" class="telegram-feed">
-            <h2 style="text-align: center; color: #24A1DE; margin-bottom: 25px;"><i class="fab fa-telegram"></i> Прямая трансляция из Telegram</h2>
+            <h2 style="text-align: center; color: #24A1DE; margin-bottom: 20px;"><i class="fab fa-telegram"></i> Посты из канала</h2>
             
-            <div class="tg-timeline-container">
-                <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                        data-telegram-channel="kurtukova_ts" 
-                        data-limit="15" 
-                        data-color="D4AF37" 
-                        data-dark="1"></script>
+            <div class="tg-frame-container">
+                <iframe src="https://tgstat.ru/channel/@kurtukova_ts/embed" 
+                        width="100%" 
+                        height="700" 
+                        frameborder="0" 
+                        style="border: none;">
+                </iframe>
             </div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://t.me/kurtukova_ts" target="_blank" style="background: #24A1DE; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(36, 161, 222, 0.3);">
-                    Перейти в Telegram канал
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="https://t.me/kurtukova_ts" target="_blank" style="background: #24A1DE; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold;">
+                    Подписаться в Telegram
                 </a>
             </div>
         </div>
