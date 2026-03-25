@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас — Татьяна Куртукова | Fan Community</title>
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- General Styling --- */
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
+            background-size: cover; background-attachment: fixed; background-position: center;
+            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center;
+            border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000;
+        }
+        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 1.1rem; }
+        nav a:hover { color: #ff4d4d; }
+        nav a.active { border-bottom: 2px solid #ff4d4d; padding-bottom: 5px; }
+
+        /* --- Hero Section --- */
+        .about-hero {
+            padding: 80px 20px; text-align: center;
+            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
+        }
+        .profile-img {
+            width: 180px; height: 180px; border-radius: 50%;
+            border: 4px solid #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            object-fit: cover; margin-bottom: 25px;
+        }
+
+        /* --- Main Content Layout --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2); backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .info-card:hover { transform: translateY(-5px); border-color: #d4af37; }
+        .info-card h3 { color: #d4af37; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+
+        /* --- Status Badge --- */
+        .status-badge {
+            display: inline-block; background: #24A1DE; color: white;
+            padding: 8px 20px; border-radius: 50px; font-weight: bold;
+            margin-bottom: 15px; font-size: 0.9rem;
+        }
+
+        /* --- Footer --- */
+        footer { padding: 40px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; }
+            nav a { margin: 0 8px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="news.html">Новости</a>
+        <a href="videos.html">Видео</a>
+        <a href="about.html" class="active">О нас</a>
+        <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; margin-left: 10px;">
+            <i class="fas fa-robot"></i> AI Bot
+        </a>
+    </nav>
+
+    <div class="about-hero">
+        <img src="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Fan Community Logo" class="profile-img">
+        <div class="status-badge"><i class="fas fa-certificate"></i> Official Fan Manager</div>
+        <h1 style="font-size: 3rem; color: #d4af37; margin: 10px 0;">О нашем сообществе</h1>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.8;">
+            Мы объединяем сердца поклонников Татьяны Куртуковой из Иракского Курдистана и всего мира.
+        </p>
+    </div>
+
+    <div class="container">
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-globe-europe"></i> Наша История</h3>
+                <p>
+                    Это сообщество было создано для того, чтобы поддерживать творчество Татьяны Куртуковой на международном уровне. Мы гордимся тем, что наш контент был признан и репостнут самой артисткой.
+                </p>
+                <p style="color: #d4af37; font-style: italic;">
+                    "Музыка не знает границ, и мы здесь, чтобы доказать это."
+                </p>
+            </div>
+
+            <div class="info-card" dir="rtl">
+                <h3><i class="fas fa-star"></i> مێژووی ئێمە</h3>
+                <p>
+                    ئەم کۆمەڵگەیە دروستکراوە بۆ پشتگیریکردنی هونەری تانیا کورتوکۆڤا لەسەر ئاستی جیهانی. ئێمە شانازی دەکەین کە کارەکانمان لەلایەن خودی هونەرمەندەکەوە بینراون و بڵاوکراونەتەوە.
+                </p>
+                <p style="color: #d4af37; font-style: italic;">
+                    "مۆسیقا سنوور ناناسێت، ئێمە لێرەین بۆ سەلماندنی ئەوە."
+                </p>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-top: 40px; text-align: center;">
+            <h3 style="justify-content: center;"><i class="fas fa-user-shield"></i> Связь с артистом / پەیوەندی</h3>
+            <p>
+                Являясь администратором этого ресурса, я поддерживаю прямой цифровой контакт с Татьяной, что позволяет нам публиковать только самую достоверную и свежую информацию.
+            </p>
+            <p dir="rtl">
+                وەک بەڕێوبەری ئەم پلاتفۆرمە، من پەیوەندییەکی دیجیتاڵیم لەگەڵ تانیا هەیە، ئەمەش ڕێگەمان دەدات هەمیشە ڕاستترین و نوێترین زانیاری بڵاو بکەینەوە.
+            </p>
+            
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://t.me/kurtukova_ts" style="color: #24A1DE; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="#" style="color: #E1306C; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p style="color: #d4af37; margin-bottom: 5px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="font-size: 0.8rem; opacity: 0.5;">Developed with passion in Erbil</p>
+    </footer>
+
+</body>
+</html>
