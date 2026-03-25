@@ -37,8 +37,13 @@
         .input-area input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; background: #000; color: #fff; outline: none; }
         .input-area button { padding: 0 25px; background: #d4af37; color: #1a0500; border: none; border-radius: 12px; cursor: pointer; }
 
-        /* شاردنەوەی تەواوەتی ئایکۆنە ئەسڵییەکەی تیدۆ */
-        #tidio-chat-iframe, .tidio-chat-widget { display: none !important; visibility: hidden !important; }
+        /* بە زۆر شاردنەوەی هەموو پارچەکانی تیدۆ */
+        #tidio-chat, #tidio-chat-iframe, .tidio-chat-widget, #tidio-chat-code { 
+            display: none !important; 
+            visibility: hidden !important; 
+            opacity: 0 !important; 
+            pointer-events: none !important;
+        }
     </style>
 </head>
 <body>
@@ -58,11 +63,9 @@
             <i class="fas fa-robot" style="font-size: 40px; color: #d4af37; margin-bottom: 10px;"></i>
             <h1 style="color: #d4af37; margin: 0 0 10px 0; font-size: 1.6rem;">Tatyana AI Bot</h1>
         </div>
-
         <div id="chat-box">
-            <div class="message bot-msg">Привет! 👋 Я слушаю тебя. / Hello! I'm listening. / سڵاو! گوێگرتم.</div>
+            <div class="message bot-msg">Привет! 👋 Чем могу помочь? / سڵاو! چۆن یارمەتیت بدەم؟</div>
         </div>
-
         <div class="input-area">
             <input type="text" id="userInput" placeholder="Напишите сообщение...">
             <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
@@ -72,37 +75,50 @@
     <script src="//code.tidio.co/kxd4uklm8kp3mcqbg6ubzntmcmat1kme.js" async></script>
 
     <script>
-        // کاتێک تیدۆ ئامادە دەبێت، ئایکۆنەکەی بشارەوە
+        // فەنکشنی شاردنەوەی تەمەڵانەی تیدۆ!
+        function hideTidio() {
+            if (window.tidioChatApi) {
+                window.tidioChatApi.hide();
+                window.tidioChatApi.display(false);
+            }
+        }
+
         window.tidioChatApiReady = function() {
-            window.tidioChatApi.hide();
+            // یەکسەر بیشارەوە
+            hideTidio();
             
-            // وەرگرتنی وەڵام لە تیدۆ و پیشاندانی لە دیزاینەکەی خۆمان
+            // ئەگەر وەڵام هات، نیشانی بدە لە ناو دیزاینەکەی خۆمان
             window.tidioChatApi.on("messageFromService", function(message) {
                 const chatBox = document.getElementById("chat-box");
                 chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
+                // دڵنیابوونەوە لەوەی دوای وەڵامەکەش تیدۆ ناێتە پێشەوە
+                hideTidio();
             });
         };
+
+        // هەموو ٢ چرکەیەک پشکنین بکە بۆ شاردنەوەی (بۆ دڵنیایی زیاتر)
+        setInterval(hideTidio, 2000);
 
         function sendMessage() {
             const inputField = document.getElementById("userInput");
             const message = inputField.value.trim();
             const chatBox = document.getElementById("chat-box");
 
-            if (message === "") return;
+            if (message === "" || !window.tidioChatApi) return;
 
-            // پیشاندانی نامەی بەکارهێنەر لەناو سندوقەکە
+            // ١. نیشاندانی نامەی بەکارهێنەر
             chatBox.innerHTML += `<div class="message user-msg">${message}</div>`;
             inputField.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // ناردنی نامەکە بۆ تیدۆ بەبێ ئەوەی پەنجەرەکەی بکرێتەوە
-            if (window.tidioChatApi) {
-                window.tidioChatApi.messageFromVisitor(message);
-            }
+            // ٢. ناردنی نامەکە بە بێدەنگی (Silent Send)
+            window.tidioChatApi.messageFromVisitor(message);
+
+            // ٣. یەکسەر تیدۆ بشارەوە ئەگەر ویستی خۆی چالاک بکات
+            setTimeout(hideTidio, 100);
         }
 
-        // کاراکردنی دوگمەی Enter
         document.getElementById("userInput").addEventListener("keypress", (e) => {
             if (e.key === "Enter") sendMessage();
         });
