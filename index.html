@@ -63,19 +63,27 @@
         h1 { font-size: 3.5rem; color: #d4af37; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
         .subtitle { font-size: 1.5rem; font-style: italic; color: #ffcccc; margin-bottom: 40px; }
 
+        /* --- Countdown Styling --- */
+        .new-song-alert {
+            background: rgba(26, 5, 0, 0.85); border: 2px solid #d4af37;
+            border-radius: 20px; padding: 25px; margin: 30px auto; max-width: 600px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+        .new-song-alert h3 { color: #d4af37; margin-top: 0; font-size: 1.4rem; letter-spacing: 1px; }
+        .song-name { color: #fff; font-size: 1.8rem; font-weight: bold; margin: 10px 0; text-shadow: 0 0 10px #d4af37; }
+        .timer-grid { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .timer-item { background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 12px; min-width: 75px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timer-item span { display: block; font-size: 2rem; font-weight: bold; color: #fff; }
+        .timer-item p { margin: 5px 0 0; font-size: 0.8rem; color: #d4af37; text-transform: uppercase; }
+
         .bio-section {
             padding: 50px 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37;
             border-radius: 20px; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap;
             text-align: left; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        /* لابردنی position: sticky بۆ ئەوەی تێکست نەچێتە ژێری */
         .bio-image-square { flex: 1; min-width: 250px; text-align: center; } 
-        
-        .bio-image-square img {
-            width: 100%; max-width: 280px; border-radius: 10px;
-            border: 2px solid #d4af37;
-        }
+        .bio-image-square img { width: 100%; max-width: 280px; border-radius: 10px; border: 2px solid #d4af37; }
         .bio-info { flex: 2; min-width: 300px; }
         .bio-info h2 { color: #d4af37; font-size: 2rem; margin-top: 0; border-bottom: 1px dashed #d4af37; padding-bottom: 10px; margin-bottom: 20px;}
         .bio-info p { line-height: 1.8; color: #eee; font-size: 1.15rem; margin-bottom: 15px; text-align: justify; }
@@ -96,9 +104,8 @@
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a> 
         <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; font-weight: bold; text-decoration: none; margin-left: 10px; display: inline-flex; align-items: center; gap: 5px;">
-    <i class="fas fa-robot"></i> AI Bot
+            <i class="fas fa-robot"></i> AI Bot
         </a>
-        
     </nav>
 
     <div class="main-content">
@@ -107,6 +114,17 @@
         
         <h1>Татьяна Куртукова</h1>
         <p class="subtitle">Добро пожаловать на фан-сайт</p>
+
+        <div class="new-song-alert">
+            <h3>ДО ПРЕМЬЕРЫ НОВОЙ ПЕСНИ:</h3>
+            <div class="song-name">«Не спеши»</div>
+            <div class="timer-grid">
+                <div class="timer-item"><span id="days">00</span><p>Дней</p></div>
+                <div class="timer-item"><span id="hours">00</span><p>Часов</p></div>
+                <div class="timer-item"><span id="minutes">00</span><p>Минут</p></div>
+                <div class="timer-item"><span id="seconds">00</span><p>Секунд</p></div>
+            </div>
+        </div>
 
         <div id="bio-anchor" class="bio-section">
             <div class="bio-image-square">
@@ -139,10 +157,35 @@
     </footer>
 
     <script>
+        // Loader logic
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
             setTimeout(() => { loader.classList.add("loader-hidden"); }, 800); 
         });
+
+        // Countdown Timer Logic
+        // کاتی بڵاوبوونەوە: هەینی 27/3/2026 کاتژمێر 00:00
+        const releaseDate = new Date("March 27, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = releaseDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".new-song-alert").innerHTML = "<h3>ПРЕМЬЕРА СОСТОЯЛАСЬ!</h3><div class='song-name'>«Не спеши» уже доступна!</div>";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
