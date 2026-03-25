@@ -71,6 +71,7 @@
             overflow: hidden;
             background: rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
+            cursor: pointer; /* نیشاندانی شێوەی دەست */
         }
 
         .image-card:hover {
@@ -83,6 +84,58 @@
             object-fit: cover;
             display: block;
         }
+
+        /* --- Lightbox Styles --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border: 3px solid #d4af37;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #d4af37;
+            font-size: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover { color: white; }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+        .prev:hover, .next:hover { color: white; scale: 1.1; }
 
         footer {
             padding: 40px;
@@ -104,70 +157,77 @@
         <p id="photo-count">Всего фото: ...</p>
         
         <div class="gallery-grid">
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(0)">
                 <img src="https://i.postimg.cc/d1qHkxXR/4fa48bc2582d14323e73800947531ff0-1000x1000x1.png" alt="Tatyana Photo 1">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(1)">
                 <img src="https://i.postimg.cc/CKW89BCj/maxresdefault.jpg" alt="Tatyana Photo 2">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(2)">
                 <img src="https://i.postimg.cc/1RG2zDdQ/IMG-20251111-163832-920.jpg" alt="Tatyana Photo 3">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(3)">
                 <img src="https://i.postimg.cc/446q3p0Z/na2z-i-GYz9I.jpg" alt="Tatyana Photo 4">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(4)">
                 <img src="https://i.postimg.cc/yxvph4tp/35479069f8bc861b81ba0144d1933826b3257b12.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(5)">
                 <img src="https://i.postimg.cc/vT327Fkj/i.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(6)">
                 <img src="https://i.postimg.cc/J0PY3Vvx/i-(1).jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(7)">
                 <img src="https://i.postimg.cc/KjJp7Sw9/i-(2).jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(8)">
                 <img src="https://i.postimg.cc/wM0458ZZ/maxresdefault-(1).jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(9)">
                 <img src="https://i.postimg.cc/cCXk7y2T/maxresdefault-(2).jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(10)">
                 <img src="https://i.postimg.cc/XqVDy7H9/New-Project-832-AC7926A.png" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(11)">
                 <img src="https://i.postimg.cc/W1Qkvt6m/1280x853-0xb2by-Sh9K-5797369806768459357.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(12)">
                 <img src="https://i.postimg.cc/sgthr19h/36f2054977cf2b683d91156453f2212f.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(13)">
                 <img src="https://i.postimg.cc/BndK0tcc/ac426717c503e4a5e0f0198822900db55194dc7e.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(14)">
                 <img src="https://i.postimg.cc/SxwMhj7d/Kurtukova-250924.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(15)">
                 <img src="https://i.postimg.cc/bwKthdH1/l-4945.jpg" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(16)">
                 <img src="https://i.postimg.cc/4xr9gnb6/New-Project-834-704B228.png" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(17)">
                 <img src="https://i.postimg.cc/K8dM24rB/New-Project-835-B8F6472.png" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(18)">
                 <img src="https://i.postimg.cc/bwKthdHb/New-Project-836-B0CAF55.png" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(19)">
                 <img src="https://i.postimg.cc/JzykvjJB/New-Project-837-35D7BEF.png" alt="Татьяна Куртукова">
             </div>
-            <div class="image-card">
+            <div class="image-card" onclick="openLightbox(20)">
                 <img src="https://i.postimg.cc/pLgFHyYJ/snachala-otvergla-shamana-a-teper-proshlas-po-babkinoy-ispolnitelnica-hita-matushka-zemlya-tatyana-k.jpg" alt="Татьяна Куртукова">
             </div>
         </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Zoomed Photo">
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
     </div>
 
     <footer>
@@ -185,12 +245,57 @@
     </footer>
 
     <script>
+        let currentImgIndex = 0;
+        const images = [];
+
         document.addEventListener("DOMContentLoaded", function() {
-            // ژماردنی هەموو ئەو دیڤانەی کڵاسی image-card یان هەیە
-            const totalPhotos = document.querySelectorAll('.image-card').length;
+            // کۆکردنەوەی لینکی هەموو وێنەکان
+            const imgElements = document.querySelectorAll('.image-card img');
+            imgElements.forEach((img) => {
+                images.push(img.src);
+            });
+
+            // نوێکردنەوەی ژمارەی وێنەکان
+            const totalPhotos = images.length;
             const countElement = document.getElementById('photo-count');
             if (countElement) {
                 countElement.innerText = "Всего фото: " + totalPhotos;
+            }
+        });
+
+        function openLightbox(index) {
+            currentImgIndex = index;
+            document.getElementById("lightbox").style.display = "flex";
+            document.getElementById("lightbox-img").src = images[currentImgIndex];
+            document.body.style.overflow = "hidden"; // ڕاگرتنی سکرۆڵی سایتەکە
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+            document.body.style.overflow = "auto"; // گەڕانەوەی سکرۆڵ
+        }
+
+        function changeImage(step) {
+            currentImgIndex += step;
+            if (currentImgIndex >= images.length) currentImgIndex = 0;
+            if (currentImgIndex < 0) currentImgIndex = images.length - 1;
+            document.getElementById("lightbox-img").src = images[currentImgIndex];
+        }
+
+        // داخستن بە کلیک کردن لە دەرەوەی وێنەکە
+        window.onclick = function(event) {
+            const lightbox = document.getElementById("lightbox");
+            if (event.target == lightbox) {
+                closeLightbox();
+            }
+        }
+
+        // بەکارهێنانی کیبۆرد بۆ گۆڕینی وێنەکان
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById("lightbox").style.display === "flex") {
+                if (e.key === "Escape") closeLightbox();
+                if (e.key === "ArrowRight") changeImage(1);
+                if (e.key === "ArrowLeft") changeImage(-1);
             }
         });
     </script>
