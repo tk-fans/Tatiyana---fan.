@@ -12,21 +12,11 @@
             color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px;
         }
         
-        /* ستایلی مینیوو */
         nav {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
+            text-align: center; margin-bottom: 20px; padding: 10px;
+            background: rgba(0,0,0,0.5); border-radius: 10px;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+        nav a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; transition: 0.3s; }
         nav a:hover { color: #d4af37; }
 
         .chat-container { 
@@ -35,15 +25,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; height: 70vh;
         }
 
-        .header-info { 
-            text-align: center; color: #eee; font-size: 0.9rem; margin-bottom: 20px; 
-            padding: 12px; background: rgba(212, 175, 55, 0.1); border-radius: 10px; border: 1px dashed #d4af37; line-height: 1.6;
-        }
-
-        #chat-box { 
-            flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; padding-right: 10px;
-        }
-        
+        #chat-box { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; padding-right: 10px; }
         #chat-box::-webkit-scrollbar { width: 5px; }
         #chat-box::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
 
@@ -52,14 +34,11 @@
         .user-msg { background: rgba(255, 255, 255, 0.1); border-right: 4px solid #aaa; align-self: flex-end; text-align: right; color: #ddd; }
 
         .input-area { display: flex; gap: 10px; margin-top: 20px; }
-        .input-area input { 
-            flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; 
-            background: #000; color: #fff; font-size: 1rem; outline: none;
-        }
-        .input-area button { 
-            padding: 0 25px; background: #d4af37; color: #1a0500; border: none; 
-            border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.2rem;
-        }
+        .input-area input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; background: #000; color: #fff; outline: none; }
+        .input-area button { padding: 0 25px; background: #d4af37; color: #1a0500; border: none; border-radius: 12px; cursor: pointer; }
+
+        /* شاردنەوەی ئایکۆنە خڕەکەی تیدۆ */
+        #tidio-chat-iframe { display: none !important; }
     </style>
 </head>
 <body>
@@ -80,94 +59,50 @@
             <h1 style="color: #d4af37; margin: 0 0 10px 0; font-size: 1.6rem;">Tatyana AI Bot</h1>
         </div>
 
-        <div class="header-info">
-            🤖 <strong>Я понимаю 3 языка / I understand 3 languages / من لە ٣ زمان تێدەگەم:</strong><br>
-            <span style="color: #d4af37;">Русский 🇷🇺 | English 🇬🇧 | Kurdi 🇹🇯</span>
-        </div>
-
         <div id="chat-box">
-            <div class="message bot-msg">
-                Привет! 👋 Спроси меня о Татьяне!<br>
-                <em>(Возраст, Песни, Family, تەمەن)</em>
-            </div>
+            <div class="message bot-msg">Привет! 👋 Я слушаю тебя. / Hello! I'm listening. / سڵاو! گوێگرتم.</div>
         </div>
 
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="Напишите вопрос...">
+            <input type="text" id="userInput" placeholder="Напишите сообщение...">
             <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
+    <script src="//code.tidio.co/kxd4uklm8kp3mcqbg6ubzntmcmat1kme.js" async></script>
+
     <script>
-                // داتابەیس: لێرە زانیارییەکان نوێ کراونەتەوە
-        const knowledgeBase = {
-            // --- РУССКИЙ (Russian) ---
-            "имя": "Полное имя — Татьяна Сергеевна Макеева, но она известна под сценическим псевдонимом Татьяна Куртукова.",
-            "фамилия": "Её настоящая фамилия — Макеева.",
-            "возраст": "Татьяне сейчас 32 года. Она родилась 9 сентября 1993 года.",
-            "день рождения": "Она родилась 9 сентября 1993 года.",
-            "семья": "У Татьяны есть муж (адвокат) и дочь по имени Эвника Никитична.",
-            "дочь": "Её дочь зовут Эвника Никитична.",
-            "муж": "Её муж — адвокат, они в браке с 2019 года.",
-            "пианино": "Татьяна начала заниматься на фортепиано (пианино) в возрасте 4 лет.",
-            "музык": "Она занимается музыкой с 4 лет, начав с пианино.",
-            "песн": "Её главные хиты: «Матушка», «Ромашка Василёк», «Одного».",
-
-            // --- ENGLISH (English) ---
-            "name": "Her full name is Tatyana Sergeyevna Makeyeva, but she is known as Tatyana Kurtukova.",
-            "real name": "Her real name is Tatyana Sergeyevna Makeyeva.",
-            "age": "Tatyana is 32 years old (born September 9, 1993).",
-            "family": "Tatyana is married to a lawyer and has a daughter named Evnika Nikitichna.",
-            "daughter": "Her daughter's name is Evnika Nikitichna.",
-            "piano": "She started learning piano at the young age of 4.",
-            "start": "She began her musical journey at age 4 with the piano.",
-
-            // --- KURDI (Kurdish) ---
-            "ناو": "ناوی تەواوی (تاتیانا سێرگیڤنا ماکیڤا)یە، بەڵام بە (تاتیانا کورتوکۆڤا) ناسراوە.",
-            "ناوی تەواو": "ناوی ڕاستی و تەواوی (تاتیانا سێرگیڤنا ماکیڤا)یە.",
-            "تەمەن": "تاتیانا تەمەنی ٣٢ ساڵە و لە ٩ی ئەیلولی ١٩٩٣ لەدایکبووە.",
-            "ساڵ": "تاتیانا ئێستا ٣٢ ساڵە.",
-            "خێزان": "تاتیانا هاوسەرگیری کردووە (مێردەکەی پارێزەرە) و کچێکی هەیە بە ناوی ئەڤنیکا نیکیتیچنا.",
-            "کچ": "کچەکەی ناوی (ئەڤنیکا نیکیتیچنا)یە.",
-            "منداڵ": "تاتیانا کچێکی هەیە بە ناوی ئەڤنیکا.",
-            "هاوسەر": "هاوسەرەکەی پارێزەرە.",
-            "پیانۆ": "تاتیانا لە تەمەنی ٤ ساڵییەوە دەستی بە فێربوونی پیانۆ کردووە.",
-            "دەست": "لە تەمەنی ٤ ساڵییەوە بە فێربوونی پیانۆ دەستی بە کاری مۆسیقا کردووە."
-        };
-        
-
         function sendMessage() {
             const inputField = document.getElementById("userInput");
-            let text = inputField.value.trim().toLowerCase();
-            if (text === "") return;
+            const message = inputField.value.trim();
+            if (message === "") return;
 
             const chatBox = document.getElementById("chat-box");
-            chatBox.innerHTML += `<div class="message user-msg">${text}</div>`;
-            inputField.value = "";
             
-            const loadingId = "load-" + Date.now();
-            chatBox.innerHTML += `<div id="${loadingId}" class="message bot-msg">...</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
+            // پیشاندانی نامەی بەکارهێنەر لە لاپەڕەکە
+            chatBox.innerHTML += `<div class="message user-msg">${message}</div>`;
+            
+            // ناردنی نامەکە بۆ تیدۆ لە پشتەوە
+            if (window.tidioChatApi) {
+                window.tidioChatApi.messageFromVisitor(message);
+            }
 
-            setTimeout(() => {
-                document.getElementById(loadingId).remove();
-                let answer = "Я не знаю ответа. / I don't know. / ببورە، زانیاریم نییە.";
-                
-                for (let key in knowledgeBase) {
-                    if (text.includes(key)) {
-                        answer = knowledgeBase[key];
-                        break;
-                    }
-                }
-                chatBox.innerHTML += `<div class="message bot-msg">${answer}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 600);
+            inputField.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
+
+        // وەرگرتنی وەڵام لە تیدۆ و پیشاندانی لە لاپەڕەکە
+        document.onTidioChatApiReady = function() {
+            window.tidioChatApi.on("messageFromService", function(message) {
+                const chatBox = document.getElementById("chat-box");
+                chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        };
 
         document.getElementById("userInput").addEventListener("keypress", (e) => {
             if (e.key === "Enter") sendMessage();
         });
-    </script> 
-    <script src="//code.tidio.co/kxd4uklm8kp3mcqbg6ubzntmcmat1kme.js" async></script>
+    </script>
 </body>
 </html>
