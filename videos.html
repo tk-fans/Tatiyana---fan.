@@ -17,7 +17,7 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #1a0500; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.4s ease;
         }
         .loader-circle {
             width: 60px; height: 60px; border: 5px solid rgba(212, 175, 55, 0.1);
@@ -110,13 +110,12 @@
     </div>
 
     <nav>
-    <nav>
         <a href="index.html">Главная</a>
         <a href="gallery.html">Галерея</a>
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a> 
-        <a href="quiz.html">Главная</a>
-        <a href="about.html" class="active">О нас</a>
+        <a href="quiz.html">Квиз</a>
+        <a href="about.html">О нас</a>
         <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; margin-left: 10px;">
             <i class="fas fa-robot"></i> AI Bot
         </a>
@@ -138,160 +137,46 @@
         </div>
 
         <div class="video-grid" id="mainGrid">
-            <div class="video-card songs">
-                <h3>Матушка</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Ромашка Василёк</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Одного</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Наливное яблочко</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Ты родная мне</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Русская дорога</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Алёшенька</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/Y7eUnLp06Wc"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Синяя вода</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/PCUkAElegn4"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Боже, какой пустяк</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/xaFcSmxXRFM"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Два берега</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/yeJ49noQrmE"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>С добром</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/gmwTT9XT6uY"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Синий платочек</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/_b9uxElesn0"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Я любила сокола</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/HatE6O4gpMc"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>Озёра синие</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/7CVuGLed6MA"></iframe></div>
-            </div>
-            <div class="video-card songs">
-                <h3>У истока</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM"></iframe></div>
-            </div>
-
-            <div class="video-card live">
-                <h3>Русская мода (Live)</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
-            </div>
-
-            <div class="video-card podcasts">
-                <h3>Интервью с Алёной</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью с Лаурой Джугелия</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью для телеканала RU.TV</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/7Je5atsAiGw"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>интервью с «новым радио»</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/nRpCBRvFh5A"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью для «Москва 24»</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/aBBbptDVB3w"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью с Заурбеком</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/RNWio-BJmVw"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Эксклюзив на RU.TV</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/R8u01amgxYg"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>В гостях у Love Radio</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/tu_P4hdKgeE"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью для канала Жара ТВ</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/aFRCFWRxVGw"></iframe></div>
-            </div>
-            <div class="video-card live podcasts">
-                <h3>Живой концерт на «Авторадио»</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/ELbm4htrAyo"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Интервью на «Русский Хит»</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/PpVdG5RKBm4"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>Репортаж на «Москва 24»</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/rMoyAHMvpF8"></iframe></div>
-            </div>
-            <div class="video-card podcasts">
-                <h3>VK FEST 2025</h3>
-                <div class="video-container"><iframe src="https://vk.com/video_ext.php?oid=-165631795&id=456240335&hash=6d4d5e9f8f2e9a1b&start=13480"></iframe></div>
-            </div> 
-            <div class="video-card podcasts">
-                <h3>Канаевка</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/pIFZBs12shg"></iframe></div>
+            <div class="video-card songs"><h3>Матушка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM"></iframe></div></div>
+            <div class="video-card songs"><h3>Ромашка Василёк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs"></iframe></div></div>
+            <div class="video-card songs"><h3>Одного</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk"></iframe></div></div>
+            <div class="video-card songs"><h3>Наливное яблочко</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us"></iframe></div></div>
+            <div class="video-card songs"><h3>Ты родная мне</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc"></iframe></div></div>
+            <div class="video-card songs"><h3>Русская дорога</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ"></iframe></div></div>
+            <div class="video-card songs"><h3>Алёшенька</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/Y7eUnLp06Wc"></iframe></div></div>
+            <div class="video-card songs"><h3>Синяя вода</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/PCUkAElegn4"></iframe></div></div>
+            <div class="video-card songs"><h3>Боже, какой пустяк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/xaFcSmxXRFM"></iframe></div></div>
+            <div class="video-card songs"><h3>Два берега</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/yeJ49noQrmE"></iframe></div></div>
+            <div class="video-card songs"><h3>С добром</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/gmwTT9XT6uY"></iframe></div></div>
+            <div class="video-card songs"><h3>Синий платочек</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/_b9uxElesn0"></iframe></div></div>
+            <div class="video-card songs"><h3>Я любила сокола</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/HatE6O4gpMc"></iframe></div></div>
+            <div class="video-card songs"><h3>Озёра синие</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/7CVuGLed6MA"></iframe></div></div>
+            <div class="video-card songs"><h3>У истока</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM"></iframe></div></div>
+            <div class="video-card live"><h3>Русская мода (Live)</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью с Алёной</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью с Лаурой Джугелия</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью для телеканала RU.TV</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/7Je5atsAiGw"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью с «Новым радио»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/nRpCBRvFh5A"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью для «Москва 24»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/aBBbptDVB3w"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью с Заурбеком</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/RNWio-BJmVw"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Эксклюзив на RU.TV</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/R8u01amgxYg"></iframe></div></div>
+            <div class="video-card podcasts"><h3>В гостях у Love Radio</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/tu_P4hdKgeE"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью для канала Жара ТВ</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/aFRCFWRxVGw"></iframe></div></div>
+            <div class="video-card live podcasts"><h3>Живой концерт на «Авторадио»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ELbm4htrAyo"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Интервью на «Русский Хит»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/PpVdG5RKBm4"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Репортаж на «Москва 24»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/rMoyAHMvpF8"></iframe></div></div>
+            <div class="video-card podcasts"><h3>VK FEST 2025</h3><div class="video-container"><iframe src="https://vk.com/video_ext.php?oid=-165631795&id=456240335&hash=6d4d5e9f8f2e9a1b&start=13480"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Канаевка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/pIFZBs12shg"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/0IqO5GW6i2A"></iframe></div></div> 
+            <div class="video-card podcasts live"><h3>Таврида.АRT</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mKQRS9aIteM"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Таврида.ART</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JGH_HZS7KQ4"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Радио Шансон</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ZPjoa3t0oiE"></iframe></div></div> 
+            <div class="video-card podcasts live"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/l689gxWT9s4"></iframe></div></div>
+            <div class="video-card podcasts"><h3>Дорожное радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/lDn3s8xxn7Y"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Новогоднее такси</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/e-qktmtMA-I"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Детское Радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8t6Jq932lLw"></iframe></div></div> 
         </div> 
-            <div class="video-card podcasts">
-                <h3>Авто радио</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/0IqO5GW6i2A"></iframe></div>
-        </div> 
-            <div class="video-card podcasts live">
-                <h3>Таврида.АRT</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/mKQRS9aIteM"></iframe></div>
-        </div> 
-              <div class="video-card podcasts">
-                <h3>Таврида.ART</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/JGH_HZS7KQ4"></iframe></div>
-        </div> 
-              <div class="video-card podcasts">
-                <h3>Радио Шансон</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/ZPjoa3t0oiE"></iframe></div>
-        </div> 
-              <div class="video-card podcasts live">
-                <h3>Авто радио</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/l689gxWT9s4"></iframe></div>
-        </div>
-              <div class="video-card podcasts">
-                <h3>Дорожное радио</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/lDn3s8xxn7Y"></iframe></div>
-        </div> 
-              <div class="video-card podcasts">
-                <h3>Новогоднее такси</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/e-qktmtMA-I"></iframe></div>
-        </div> 
-              <div class="video-card podcasts">
-                <h3>Детское Радио</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/8t6Jq932lLw"></iframe></div>
-        </div> 
+    </div>
 
     <button id="backToTop" class="back-to-top" title="Наверх">
         <i class="fas fa-chevron-up"></i>
@@ -304,16 +189,20 @@
         </div>
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 15px; display: inline-block;">
             <p style="color: #ccc; font-size: 12px; margin-bottom: 8px;">Просмотры сайта</p>
-            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" alt="counter">
         </div>
         <p style="color: #d4af37; margin-top: 25px; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
+        // Loader logic optimized
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
-            setTimeout(() => { loader.classList.add("loader-hidden"); }, 800); 
-            updateVideoCount();
+            // Reduced timeout for faster entry
+            setTimeout(() => { 
+                loader.classList.add("loader-hidden"); 
+                updateVideoCount();
+            }, 300); 
         });
 
         const backToTopBtn = document.getElementById("backToTop");
@@ -331,13 +220,14 @@
         function updateVideoCount() {
             const visibleCards = document.querySelectorAll('.video-card:not(.hidden)');
             const countElement = document.getElementById('video-count');
-            countElement.innerText = "Всего видео: " + visibleCards.length;
+            if(countElement) countElement.innerText = "Всего видео: " + visibleCards.length;
         }
 
         function filterVideos(category) {
             currentCategory = category;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + category).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + category);
+            if(activeBtn) activeBtn.classList.add('active');
             applyFilters();
         }
 
