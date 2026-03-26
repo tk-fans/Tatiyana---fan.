@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квиз: Знаток Татьяны Куртуковой ✨</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #d4af37; --dark: #1a0500; --red: #ff4d4d; }
+        
+        body {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url("https://i.postimg.cc/QCTGpSC0/New-Project-59F2DA6.png");
+            background-size: cover; background-attachment: fixed;
+            color: white; font-family: 'Segoe UI', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; margin: 0; overflow-x: hidden;
+        }
+
+        .quiz-card {
+            background: rgba(26, 5, 0, 0.95);
+            width: 90%; max-width: 500px;
+            padding: 30px; border-radius: 25px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            text-align: center; position: relative;
+        }
+
+        .progress-container { width: 100%; height: 8px; background: #333; border-radius: 10px; margin-bottom: 20px; }
+        #progress-bar { width: 0%; height: 100%; background: var(--gold); border-radius: 10px; transition: 0.4s; }
+
+        .question-num { color: var(--gold); font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; }
+        .question-text { font-size: 1.3rem; margin-bottom: 25px; min-height: 60px; line-height: 1.4; }
+
+        .options { display: grid; gap: 12px; }
+        .option-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: white; padding: 15px; border-radius: 12px;
+            cursor: pointer; font-size: 1rem; transition: 0.3s;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .option-btn:hover { background: rgba(212, 175, 55, 0.15); border-color: var(--gold); }
+        .option-btn.correct { background: #2ecc71 !important; border-color: #2ecc71; color: white; }
+        .option-btn.wrong { background: #e74c3c !important; border-color: #e74c3c; color: white; }
+
+        /* Result Modal */
+        #result-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none;
+            justify-content: center; align-items: center; z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+        .modal-content {
+            background: var(--dark); border: 2px solid var(--gold);
+            padding: 40px; border-radius: 30px; text-align: center;
+            max-width: 400px; width: 85%; animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .score-circle {
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 5px solid var(--gold); display: flex;
+            flex-direction: column; justify-content: center; align-items: center;
+            margin: 0 auto 20px; font-weight: bold;
+        }
+        .score-percent { font-size: 2rem; color: var(--gold); }
+        .comment-text { font-style: italic; color: #ccc; margin: 15px 0 25px; line-height: 1.5; }
+        
+        .btn-restart {
+            background: var(--gold); color: black; border: none;
+            padding: 12px 30px; border-radius: 25px; font-weight: bold;
+            cursor: pointer; font-size: 1rem; transition: 0.3s;
+        }
+        .btn-restart:hover { transform: scale(1.1); box-shadow: 0 0 15px var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-card">
+        <div class="progress-container"><div id="progress-bar"></div></div>
+        <div class="question-num" id="q-num">Вопрос 1 из 15</div>
+        <div class="question-text" id="q-text">Загрузка...</div>
+        <div class="options" id="options"></div>
+    </div>
+
+    <div id="result-modal">
+        <div class="modal-content">
+            <h2 style="color: var(--gold);">Твой результат</h2>
+            <div class="score-circle">
+                <span class="score-percent" id="final-percent">0%</span>
+                <span style="font-size: 0.8rem;" id="final-score">0/15</span>
+            </div>
+            <p class="comment-text" id="comment"></p>
+            <button class="btn-restart" onclick="location.reload()">Попробовать снова</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "Как звучит полное имя Татьяны Куртуковой?", a: ["Татьяна Куртукова", "Татьяна Сергеевна Макеева", "Куртукова Макеева"], c: 1 },
+            { q: "В каком возрасте Татьяна начала учиться играть на фортепиано?", a: ["В 6 лет", "В 5 лет", "В 4 года"], c: 2 },
+            { q: "В каком городе выросла Татьяна Куртукова?", a: ["Пенза", "Москва", "Тамбов"], c: 0 },
+            { q: "В каком городе родилась Татьяна?", a: ["Хабаровск", "Пенза", "Екатеринбург"], c: 0 },
+            { q: "В каком городе Татьяна живет сейчас?", a: ["Москва", "Санкт-Петербург", "Пенза"], c: 0 },
+            { q: "Если бы Татьяна не стала певицей, кем бы она была?", a: ["Учительницей", "Медсестрой", "Никем из них (врачом)"], c: 2 },
+            { q: "В каком году Татьяна вышла замуж?", a: ["2018", "2019", "2020"], c: 1 },
+            { q: "В каком месяце родилась Татьяна?", a: ["Май", "Сентябрь", "Март"], c: 1 },
+            { q: "В каком году родилась Татьяна?", a: ["1999", "1993", "1991"], c: 1 },
+            { q: "Какую вторую профессию Татьяна получила в магистратуре?", a: ["Юрист", "Психолог-педагог", "Дизайнер"], c: 1 },
+            { q: "В чем уникальность её сценических костюмов?", a: ["Это подлинные старинные наряды", "Их шьют известные кутюрье", "Она шьет их сама"], c: 0 },
+            { q: "Как зовут дочь Татьяны?", a: ["Мария", "Анна", "Эвника"], c: 2 },
+            { q: "С какой песней к ней пришла огромная слава?", a: ["Матушка", "Ромашка", "Я лечу"], c: 0 },
+            { q: "В каком институте Москвы училась Татьяна?", a: ["ГИТИС", "ГМПИ им. Ипполитова-Иванова", "Консерватория"], c: 1 },
+            { q: "Кем работает муж Татьяны?", a: ["Музыкант", "Адвокат", "Врач"], c: 1 }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQ() {
+            const q = questions[currentQ];
+            document.getElementById('q-num').innerText = `Вопрос ${currentQ + 1} из ${questions.length}`;
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('progress-bar').style.width = `${((currentQ) / questions.length) * 100}%`;
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            q.a.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span>${opt}</span><i class="fas fa-chevron-right" style="font-size:0.8rem; opacity:0.5;"></i>`;
+                btn.onclick = () => select(i, btn);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function select(idx, btn) {
+            const correct = questions[currentQ].c;
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(b => b.disabled = true);
+
+            if(idx === correct) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('wrong');
+                allBtns[correct].classList.add('correct');
+            }
+
+            setTimeout(() => {
+                currentQ++;
+                if(currentQ < questions.length) {
+                    loadQ();
+                } else {
+                    showResult();
+                }
+            }, 1200);
+        }
+
+        function showResult() {
+            const percent = Math.round((score / questions.length) * 100);
+            document.getElementById('result-modal').style.display = 'flex';
+            document.getElementById('final-percent').innerText = percent + '%';
+            document.getElementById('final-score').innerText = `${score} из ${questions.length}`;
+            
+            let comment = "";
+            if(percent === 100) comment = "Боже мой! Ты что, личный биограф Татьяны? Идеально! 👑";
+            else if(percent >= 80) comment = "Ого! Ты настоящий фанат. Татьяна была бы в восторге! ✨";
+            else if(percent >= 50) comment = "Неплохо, но матушка-земля ждет, что ты узнаешь больше! 🌾";
+            else if(percent >= 20) comment = "Похоже, ты только начал слушать её песни. Давай еще раз! 🎧";
+            else comment = "Эх... Ты точно фанат или просто мимо проходил? Срочно учи матчасть! 😂";
+
+            document.getElementById('comment').innerText = comment;
+        }
+
+        loadQ();
+    </script>
+</body>
+</html>
