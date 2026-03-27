@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* --- لۆدینگ --- */
         #loader-wrapper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #1a0500; display: flex; flex-direction: column;
@@ -20,56 +21,102 @@
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
-            background-size: cover; background-attachment: fixed; color: white; font-family: 'Segoe UI', sans-serif; margin: 0;
+            background-size: cover; background-attachment: fixed; color: white; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
         
-        nav { background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center; border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        nav a:hover { color: #ff4d4d; }
-        nav a.active { border-bottom: 2px solid #ff4d4d; padding-bottom: 5px; }
+        a, button, .filter-btn, .news-card { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
 
-        .main-content { padding: 40px 20px; max-width: 900px; margin: 0 auto; }
-        h1 { text-align: center; color: #d4af37; font-size: 2.5rem; }
+        /* --- Side Menu Styling --- */
+        .menu-icon {
+            position: fixed; top: 20px; left: 20px;
+            font-size: 24px; color: #d4af37; cursor: pointer;
+            z-index: 1100; background: rgba(26, 5, 0, 0.8);
+            padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
+        }
+
+        .side-menu {
+            position: fixed; top: 0; left: -50%; width: 50%; height: 100%;
+            background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
+            z-index: 1200; transition: 0.5s; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        .side-menu.active { left: 0; }
+
+        .menu-links { width: 100%; text-align: center; }
+        .menu-links a {
+            display: block; padding: 15px; text-decoration: none;
+            font-size: 1.2rem; color: #d4af37; font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu-links a:hover, .menu-links a.active { color: #ff4d4d; transform: scale(1.1); }
+
+        .close-btn-menu {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 36px; color: #d4af37; cursor: pointer;
+        }
+
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; z-index: 1150;
+        }
+        .menu-overlay.active { display: block; }
+
+        @media screen and (max-width: 768px) {
+            .side-menu { width: 80%; left: -80%; }
+        }
+
+        /* --- News Content Styles --- */
+        .main-content { padding: 80px 20px 40px 20px; max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; color: #d4af37; font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
         .filter-container { text-align: center; margin-bottom: 30px; }
-        .filter-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 25px; cursor: pointer; margin: 5px; font-weight: bold; }
+        .filter-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 25px; margin: 5px; font-weight: bold; transition: 0.3s; }
         .filter-btn.active { background: #d4af37; color: #1a0500; }
 
-        .telegram-feed { display: none; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 20px; border: 1px solid #24A1DE; }
-        
-        .tg-timeline {
-            width: 100%; height: 800px; overflow-y: auto; border-radius: 15px;
-            background: rgba(255,255,255,0.05); padding: 10px;
-        }
+        .telegram-feed { display: none; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 20px; border: 1px solid #24A1DE; backdrop-filter: blur(10px); }
+        .tg-timeline { width: 100%; height: 800px; overflow-y: auto; border-radius: 15px; background: rgba(255,255,255,0.05); padding: 10px; }
 
-        .news-card { background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37; border-radius: 15px; margin-bottom: 20px; overflow: hidden; display: flex; transition: 0.3s; }
-        .news-card:hover { transform: translateY(-5px); border-color: #ff4d4d; box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2); }
+        .news-card { background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37; border-radius: 15px; margin-bottom: 25px; overflow: hidden; display: flex; transition: 0.3s; backdrop-filter: blur(5px); }
+        .news-card:hover { transform: translateY(-5px); border-color: #ff4d4d; box-shadow: 0 5px 20px rgba(255, 77, 77, 0.3); }
         .news-image { width: 300px; flex-shrink: 0; }
         .news-image img { width: 100%; height: 100%; object-fit: cover; }
-        .news-content { padding: 20px; flex-grow: 1; }
-        .news-content h2 { color: #d4af37; margin-top: 0; }
-        .news-meta { color: #aaaaaa; font-size: 0.9rem; margin-bottom: 10px; }
-        .news-meta i { color: #d4af37; margin-right: 5px; }
+        .news-content { padding: 25px; flex-grow: 1; }
+        .news-content h2 { color: #d4af37; margin-top: 0; font-size: 1.5rem; }
+        .news-meta { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 15px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .news-meta i { color: #d4af37; }
 
-        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 250px; } }
+        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 220px; } }
     </style>
 </head>
 <body>
 
     <div id="loader-wrapper"><div class="loader-circle"></div></div>
 
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
 
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="news.html">Новости</a>
-        <a href="videos.html">Видео</a> 
-        <a href="quiz.html">Квиз</a>
-        <a href="about.html" class="active">О нас</a>
-        <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; margin-left: 10px;">
-            <i class="fas fa-robot"></i> AI Bot
-        </a>
-    </nav>
+    <div id="sideMenu" class="side-menu">
+        <div class="close-btn-menu" onclick="toggleMenu()">&times;</div>
+        <div class="menu-links">
+            <a href="index.html">Главная</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="news.html" class="active">Новости</a>
+            <a href="videos.html">Видео</a> 
+            <a href="quiz.html">Квиз</a>
+            <a href="about.html">О нас</a>
+            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 20px auto;">
+            <a href="ask.html" style="color: #FFD700;">
+                <i class="fas fa-robot"></i> AI Bot
+            </a>
+        </div>
+    </div>
+
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
     <div class="main-content">
         <h1>Последние новости</h1>
@@ -80,20 +127,19 @@
         </div>
 
         <div id="all-news">
-            
             <div id="news-topscene" class="news-card">
                 <div class="news-image"><img src="https://i.postimg.cc/cL2Z3MgB/Sk632wv-Kyew.jpg" alt="Топсцена"></div>
                 <div class="news-content">
                     <h2>Гала-концерт «Топсцена»</h2>
                     <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> 29 марта 2026</span> | 
-                        <span><i class="far fa-clock"></i> 18:00</span> | 
-                        <span><i class="fas fa-map-marker-alt"></i> Концертный зал «Москва»</span>
+                        <span><i class="far fa-calendar-alt"></i> 29 марта 2026</span>
+                        <span><i class="far fa-clock"></i> 18:00</span>
+                        <span><i class="fas fa-map-marker-alt"></i> КЗ «Москва»</span>
                     </div>
                     <p>
-                        Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена». На сцену выйдет <strong>Татьяна Куртукова</strong> вместе с другими популярными артистами, чтобы поддержать юные дарования страны.
+                        Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена». На сцену выйдет <strong>Татьяна Куртукова</strong> вместе с другими популярными артистами.
                     </p>
-                    <p style="font-size: 0.85rem; color: #888;">* Официальный партнер — «Афиша».</p>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">* Официальный партнер — «Афиша».</p>
                 </div>
             </div>
 
@@ -102,40 +148,54 @@
                 <div class="news-content">
                     <h2>Концерт «Песни Победы»</h2>
                     <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> 4 мая 2026</span> | 
-                        <span><i class="far fa-clock"></i> 19:00</span> | 
-                        <span><i class="fas fa-map-marker-alt"></i> Государственный Кремлёвский Дворец</span>
+                        <span><i class="far fa-calendar-alt"></i> 4 мая 2026</span>
+                        <span><i class="far fa-clock"></i> 19:00</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Кремлёвский Дворец</span>
                     </div>
                     <p>
-                        Масштабное музыкальное событие, приуроченное к годовщине Победы. В концерте примет участие <strong>Татьяна Куртукова</strong> и другие звезды российской эстрады. Прозвучат легендарные композиции, ставшие частью нашей истории.
+                        Масштабное музыкальное событие к годовщине Победы. В концерте примет участие <strong>Татьяна Куртукова</strong> и другие звезды российской эстрады.
                     </p>
                 </div>
             </div>
-
         </div>
 
         <div id="telegram-feed" class="telegram-feed">
-            <h2 style="text-align: center; color: #24A1DE; margin-bottom: 20px;"><i class="fab fa-telegram"></i> Прямой эфир из Telegram</h2>
-            
+            <h2 style="text-align: center; color: #24A1DE; margin-bottom: 20px;"><i class="fab fa-telegram"></i> Прямой эфир</h2>
             <div class="tg-timeline">
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1124" data-width="100%" data-color="D4AF37" data-dark="1"></script>
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1123" data-width="100%" data-color="D4AF37" data-dark="1"></script>
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1122" data-width="100%" data-color="D4AF37" data-dark="1"></script>
             </div>
-
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://t.me/kurtukova_ts" target="_blank" style="background: #24A1DE; color: white; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(36, 161, 222, 0.4);">Открыть канал</a>
+                <a href="https://t.me/kurtukova_ts" target="_blank" style="background: #24A1DE; color: white; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold;">Открыть канал</a>
             </div>
         </div>
     </div>
 
+    <footer style="background: rgba(0,0,0,0.9); border-top: 2px solid #d4af37; padding: 40px 20px; text-align: center; margin-top: 50px;">
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 25px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: 0.3s;"><i class="fab fa-youtube"></i></a> 
+        </div>
+        <div style="margin-bottom: 20px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 20px; display: inline-block;">
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
+        </div>
+        <p style="color: #d4af37; font-size: 14px; margin: 15px 0 5px 0; font-weight: bold;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="color: #888; font-size: 12px; margin: 0;">Управляемся из сердца Курдистана — Эрбиля ☀️</p>
+    </footer>
+
     <script>
-        // بەشی فلتەرکردنی هەواڵەکان و تێلیگرام
+        // لۆجیکی مینیۆ
+        function toggleMenu() {
+            document.getElementById("sideMenu").classList.toggle("active");
+            document.getElementById("menuOverlay").classList.toggle("active");
+        }
+
+        // فلتەرکردن
         function showCategory(category, btn) {
             const allNews = document.getElementById('all-news');
             const telegramFeed = document.getElementById('telegram-feed');
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             if (category === 'telegram') {
@@ -147,51 +207,22 @@
             }
         }
 
-        // بەشی شاردنەوەی ئۆتۆماتیکی (Auto-Expire)
+        // لۆدینگ و بەسەرچوونی هەواڵەکان
         window.addEventListener("load", function() {
             setTimeout(() => { document.getElementById("loader-wrapper").classList.add("loader-hidden"); }, 500);
 
-            const now = new Date(); // کاتی ئێستای مۆبایل یان کۆمپیوتەرەکە دەگرێت
-
-            // پشکنین بۆ هەواڵی یەکەم (بەسەردەچێت لە 30ی 3، 2026، کاتژمێر 00:00)
-            const topsceneExpireDate = new Date('2026-03-30T00:00:00');
-            if (now >= topsceneExpireDate) {
-                const topsceneNews = document.getElementById('news-topscene');
-                if(topsceneNews) topحsceneNews.style.display = 'none';
+            const now = new Date();
+            // بەسەرچوونی هەواڵی Topscene
+            if (now >= new Date('2026-03-30T00:00:00')) {
+                const el = document.getElementById('news-topscene');
+                if(el) el.style.display = 'none';
             }
-
-            // پشکنین بۆ هەواڵی دووەم (بەسەردەچێت لە 5ی 5، 2026، کاتژمێر 00:00)
-            const pobedaExpireDate = new Date('2026-05-05T00:00:00');
-            if (now >= pobedaExpireDate) {
-                const pobedaNews = document.getElementById('news-pobeda');
-                if(pobedaNews) pobedaNews.style.display = 'none';
+            // بەسەرچوونی هەواڵی Pobeda
+            if (now >= new Date('2026-05-05T00:00:00')) {
+                const el = document.getElementById('news-pobeda');
+                if(el) el.style.display = 'none';
             }
         });
     </script> 
-    <footer style="background: rgba(0,0,0,0.9); border-top: 2px solid #d4af37; padding: 40px 20px; text-align: center; margin-top: 50px;">
-        
-        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 25px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                <i class="fab fa-youtube"></i>
-            </a> 
-        </div>
-
-        <div style="margin-bottom: 20px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 20px; display: inline-block;">
-            <p style="color: #ccc; font-size: 12px; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase;">Просмотры сайта</p>
-            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" style="border-radius: 5px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);">
-        </div>
-            
-        <p style="color: #d4af37; font-size: 14px; margin: 15px 0 5px 0; font-weight: bold;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
-        <p style="color: #888; font-size: 12px; margin: 0;">Управляемся из сердца Курдистана — Эрбиля ☀️</p>
-
-    </footer>
-    
-</body>
-</html>
-
-    
 </body>
 </html>
