@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head> 
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
-
-    <title>главная</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="eh6CbhtjFX36PtcVnQkHxMmhhQpQUdR93iUdStEUfY0" />
-    
-    <title>Татьяна Куртукова — Официальный фан-сайт</title> 
-    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png">
-    
+
+    <title>Официальный сайт поклонников Татьяны Куртуковой</title> 
+
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+
+    <meta property="og:title" content="Официальный сайт поклонников Татьяны Куртуковой">
+    <meta property="og:description" content="Добро пожаловать на фан-сайт Татьяны Куртуковой. Новости, видео, галерея и квиз.">
+    <meta property="og:image" content="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <meta property="og:url" content="https://your-github-username.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -183,12 +181,12 @@
     <div id="sideMenu" class="side-menu">
         <div class="close-btn" onclick="toggleMenu()">&times;</div>
         <div class="menu-links">
-            <a href="index.html">Главная</a>
+            <a href="index.html" class="active">Главная</a>
             <a href="gallery.html">Галерея</a>
             <a href="news.html">Новости</a>
             <a href="videos.html">Видео</a> 
             <a href="quiz.html">Квиз</a>
-            <a href="about.html" class="active">О нас</a>
+            <a href="about.html">О нас</a>
             <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 20px auto;">
             <a href="ask.html" style="color: #FFD700;">
                 <i class="fas fa-robot"></i> AI Bot
@@ -233,7 +231,7 @@
                 <div style="text-align: center;">
                     <i class="fas fa-citadel" style="color: #d4af37; font-size: 2rem;"></i>
                     <h4 style="margin: 5px 0; color: white;">Эрбиль</h4>
-                    <span style="color: #aaa; font-size: 0.8rem;">Курдистан</span>
+                    <span style="color: #aaa; font-size: 0.8rem;">Курдиستان</span>
                 </div>
                 <div style="flex-grow: 1; max-width: 200px; position: relative; height: 2px; background: linear-gradient(90deg, #d4af37, #ff4d4d);">
                     <i class="fas fa-heart" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); color: #ff4d4d; animation: beat 1.5s infinite;"></i>
@@ -305,7 +303,7 @@
             document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // Side Menu Logic (زیادکراوە)
+        // Side Menu Logic
         function toggleMenu() {
             const menu = document.getElementById("sideMenu");
             const overlay = document.getElementById("menuOverlay");
@@ -314,4 +312,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
