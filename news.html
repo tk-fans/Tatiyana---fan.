@@ -35,7 +35,6 @@
         
         a, button, .filter-btn, .read-more-btn { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
 
-        /* --- Side Menu Styling --- */
         .menu-icon {
             position: fixed; top: 20px; left: 20px;
             font-size: 24px; color: #d4af37; cursor: pointer;
@@ -61,14 +60,12 @@
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1150; }
         .menu-overlay.active { display: block; }
 
-        /* --- Main Content & Filters --- */
         .main-content { padding: 80px 20px 40px 20px; max-width: 900px; margin: 0 auto; min-height: 80vh; }
         h1 { text-align: center; color: #d4af37; font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .filter-container { text-align: center; margin-bottom: 30px; }
         .filter-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 25px; margin: 5px; font-weight: bold; transition: 0.3s; }
         .filter-btn.active { background: #d4af37; color: #1a0500; }
 
-        /* --- Dynamic News Cards --- */
         .news-card {
             background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(212, 175, 55, 0.4); 
             border-radius: 15px; margin-bottom: 25px; overflow: hidden; display: flex; 
@@ -84,7 +81,6 @@
         .read-more-btn { align-self: flex-start; background: #d4af37; color: #1a0500; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .read-more-btn:hover { background: #ff4d4d; color: white; transform: scale(1.05); }
 
-        /* --- Single Article View --- */
         #article-view { display: none; background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 20px; border: 1px solid #d4af37; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .back-btn { background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 20px; border-radius: 20px; margin-bottom: 20px; transition: 0.3s; }
@@ -96,7 +92,7 @@
         .telegram-feed { display: none; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 20px; border: 1px solid #24A1DE; backdrop-filter: blur(10px); }
         .tg-timeline { width: 100%; height: 800px; overflow-y: auto; border-radius: 15px; background: rgba(255,255,255,0.05); padding: 10px; }
 
-        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 220px; } #article-view { padding: 15px; } .side-menu { width: 70%; left: -70%; } }
+        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 220px; } #article-view { padding: 15px; } }
     </style>
 </head>
 <body>
@@ -170,7 +166,7 @@
                 location: "Шоу-бизнес",
                 image: "https://i.postimg.cc/MGjH7m1H/iurii-loza-zastupilsia-za-nadezhdu-kadyshevu-v-spore-o-fonogramme-1024x538.webp",
                 excerpt: "Надежда Кадышева не будет реагировать на критику Татьяны Куртуковой о использовании фонограммы на концертах...",
-                content: `<p><strong>Надежда Кадышева</strong>, народная артистка России, не будет реагировать на критику Татьяны Куртуковой о использовании фонограммы на концертах, пока ее выступления собирают полные залы. Такое мнение высказал певец Юрий Лоза в интервью NEWS.ru.</p><h3>Спор о фонограмме</h3><p>Ранее Татьяна Куртукова заявила, что Надежда Кадышева использует фонограмму на своих концертах.</p>`
+                content: `<p><strong>Надежда Кадышева</strong>, народная артистка России, не будет реагировать на критику Татьяны Куртуковой о использовании фонограммы на концертах, пока ее выступления собирают полные залы. Такое мнение высказал певец Юрий Лоза в интервью NEWS.ru.</p><h3>Спор о фонограмме</h3><p>Ранее Татьяна Куртукова заявила, что Надежда Кадышева использует фонограмму на своих концертах. Однако Юрий Лоза усомнился в честности Куртуковой, предположив, что она сама может использовать «фанеру» на своих выступлениях.</p><h3>Лоза: Кадышева не будет обращать внимания на критику</h3><p>«Пока концерты собирают полный зал, Кадышева не будет обращать внимания на критику», — считает Лоза. Он также добавил, что не стоит осуждать артистов за использование фонограммы, если это не влияет на качество выступления.</p><h3>Двойной стандарт?</h3><p>Юрий Лоза также предположил, что Татьяна Куртукова может сама использовать фонограмму на своих концертах, но при этом критиковать других артистов за это.</p><ul><li><strong>Надежда Кадышева</strong> — народная артистка России.</li><li><strong>Татьяна Куртуковой</strong> — певица, критиковавшая Кадышеву.</li><li><strong>Юрий Лоза</strong> — певец, защищающий Кадышеву в этом споре.</li></ul><h3>Что стоит за критикой?</h3><p>Эксперты считают, что критика Кадышевой со стороны Куртуковой может быть связана с конкуренцией в музыкальном бизнесе. Однако официального подтверждения этому нет.</p><h3>Заключение</h3><p>В итоге, Юрий Лоза заступился за Надежду Кадышеву, предположив, что она не будет обращать внимания на критику со стороны Татьяны Куртуковой. Также Лоза усомнился в честности самой Куртуковой.</p>`
             },
             {
                 id: 2,
@@ -179,7 +175,7 @@
                 location: "КЗ «Москва»",
                 image: "https://i.postimg.cc/cL2Z3MgB/Sk632wv-Kyew.jpg",
                 excerpt: "Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена».",
-                content: "<p>Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена».</p>",
+                content: "<p>Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена». На сцену выйдет <strong>Татьяна Куртукова</strong> вместе с другими популярными артистами.</p><p style='font-size: 0.8rem; color: #888; margin-top: 10px;'>* Официальный партнер — «Афиша».</p>",
                 expireDate: "2026-03-30T00:00:00"
             },
             {
@@ -189,7 +185,7 @@
                 location: "Кремлёвский Дворец",
                 image: "https://i.postimg.cc/T1PBt5nX/1774338616.jpg",
                 excerpt: "Масштабное музыкальное событие к годовщине Победы. В концерте примет участие Татьяна Куртукова.",
-                content: "<p>Масштабное музыкальное событие к годовщине Победы.</p>",
+                content: "<p>Масштабное музыкальное событие к годовщине Победы. В концерте примет участие <strong>Татьяна Куртукова</strong> и другие звезды российской эстрады.</p>",
                 expireDate: "2026-05-05T00:00:00"
             },
             {
@@ -198,14 +194,13 @@
                 date: "7 июня 2026",
                 location: "Казань",
                 image: "https://i.postimg.cc/t4VcdsvF/yex9HLemzz34j-WXGF5p-Vcokjp-OTagy-QP2QZw-Ft9ql3fl-Th6f31p-WEp8OZem7SLZ.jpg", 
-                excerpt: "Казань, появился лайнап VK Fest 2026! На фестивале выступят Татьяна Куртукова...",
-                content: `<p>Казань, появился лайнап VK Fest 2026! На фестивале выступят Татьяна Куртукова, группа «Сироткин», Ришат Тухватуллин, Дора, Zivert.</p>`
+                excerpt: "Казань, появился лайнап VK Fest 2026! На фестивале выступят Татьяна Куртукова, группа «Сироткин», Ришат.",
+                content: `<p>Казань, появился лайнап VK Fest 2026! На фестивале выступят Татьяна Куртукова, группа «Сироткин», Ришат Тухватуллин, Дора, Zivert. И это только первый анонс — список артистов ещё будет пополняться 😍<br><br>В этом году фестиваль вернётся в столицу Татарстана 7 июня — встречаемся у Центра семьи «Казан». На территории гостей будут ждать несколько музыкальных сцен, выступления локальных исполнителей, автограф-сессии с блогерами, конкурсы, розыгрыши и активности для всей семьи. <br><br>На VK Fest каждый сможет встретить исполнителя по душе — приходите 💙<br>Билеты: vkfest.ru</p>`
             }
         ];
 
         function renderNews() {
             const container = document.getElementById("news-list-container");
-            if(!container) return;
             container.innerHTML = "";
             const now = new Date();
 
@@ -258,7 +253,6 @@
             const newsList = document.getElementById("news-list-container");
             const tgFeed = document.getElementById("telegram-feed");
             const filterBtns = document.querySelectorAll(".filter-btn");
-
             filterBtns.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
@@ -272,16 +266,16 @@
             }
         }
 
-        // لێرەدا فەرمانی ٣ چرکەکە جێگیر کراوە
-        window.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("load", () => {
             renderNews();
+            // لێرەدا لۆدینگەکە دوای ٣ چرکە لادەچێت
             setTimeout(() => {
                 const loader = document.getElementById("loader-wrapper");
-                if(loader) {
+                if (loader) {
                     loader.classList.add("loader-hidden");
                     setTimeout(() => { loader.style.display = "none"; }, 600);
                 }
-            }, 3000); // ٣٠٠٠ میلی چرکە = ٣ چرکە
+            }, 3000); 
         });
     </script>
 </body>
