@@ -201,9 +201,9 @@
         <h1>Татьяна Куртукова</h1>
         <p class="subtitle">Добро пожаловать на фан-сайт</p>
 
-        <div class="new-song-alert">
-            <h3>ДО ПРЕМЬЕРЫ НОВОЙ ПЕСНИ:</h3>
-            <div class="song-name">«Не спеши»</div>
+        <div class="new-concert-alert">
+            <h3>До концерта «Песни Победы»:</h3>
+            <div class="song-name">«Песни Победы»</div>
             <div class="timer-grid">
                 <div class="timer-item"><span id="days">00</span><p>Дней</p></div>
                 <div class="timer-item"><span id="hours">00</span><p>Часов</p></div>
@@ -293,7 +293,7 @@
         });
 
         // Countdown Timer Logic
-        const releaseDate = new Date("March 27, 2026 00:00:00").getTime();
+        const releaseDate = new Date("4 may, 2026 19:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
             const distance = releaseDate - now;
