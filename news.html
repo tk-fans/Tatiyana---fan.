@@ -62,9 +62,15 @@
 
         .main-content { padding: 80px 20px 40px 20px; max-width: 900px; margin: 0 auto; min-height: 80vh; }
         h1 { text-align: center; color: #d4af37; font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .filter-container { text-align: center; margin-bottom: 30px; }
-        .filter-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 25px; margin: 5px; font-weight: bold; transition: 0.3s; }
-        .filter-btn.active { background: #d4af37; color: #1a0500; }
+        
+        /* Search Box Styling */
+        .search-container { text-align: center; margin-bottom: 30px; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .search-input {
+            width: 100%; padding: 12px 20px; border-radius: 30px; border: 1px solid #d4af37;
+            background: rgba(26, 5, 0, 0.6); color: white; font-size: 1rem; outline: none;
+            transition: 0.3s; box-sizing: border-box;
+        }
+        .search-input:focus { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); border-color: #ff4d4d; }
 
         .news-card {
             background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(212, 175, 55, 0.4); 
@@ -88,9 +94,6 @@
         .article-hero-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
         .article-body { line-height: 1.8; color: #f0f0f0; font-size: 1.1rem; }
         .article-body h3 { color: #d4af37; margin-top: 30px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 10px; }
-
-        .telegram-feed { display: none; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 20px; border: 1px solid #24A1DE; backdrop-filter: blur(10px); }
-        .tg-timeline { width: 100%; height: 800px; overflow-y: auto; border-radius: 15px; background: rgba(255,255,255,0.05); padding: 10px; }
 
         @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 220px; } #article-view { padding: 15px; } }
     </style>
@@ -121,9 +124,8 @@
     <div class="main-content">
         <h1 id="page-title">Последние новости</h1>
 
-        <div class="filter-container" id="filters">
-            <button class="filter-btn active" onclick="showCategory('all', this)">Все новости</button>
-            <button class="filter-btn" onclick="showCategory('telegram', this)"><i class="fab fa-telegram"></i> Telegram Feed</button>
+        <div class="search-container" id="search-area">
+            <input type="text" id="newsSearch" class="search-input" placeholder="Поиск новостей..." onkeyup="filterNews()">
         </div>
 
         <div id="news-list-container"></div>
@@ -134,17 +136,6 @@
             <h1 id="art-title" style="text-align: left; font-size: 2rem; margin-bottom: 10px;"></h1>
             <div id="art-meta" class="news-meta" style="margin-bottom: 25px; border-bottom: 1px dashed rgba(212, 175, 55, 0.3); padding-bottom: 15px;"></div>
             <div id="art-content" class="article-body"></div>
-        </div>
-
-        <div id="telegram-feed" class="telegram-feed">
-            <h2 style="text-align: center; color: #24A1DE; margin-bottom: 20px;"><i class="fab fa-telegram"></i> Прямой эфир</h2>
-            <div class="tg-timeline">
-                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1124" data-width="100%" data-color="D4AF37" data-dark="1"></script>
-                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1123" data-width="100%" data-color="D4AF37" data-dark="1"></script>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://t.me/kurtukova_ts" target="_blank" style="background: #24A1DE; color: white; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold;">Открыть канал</a>
-            </div>
         </div>
     </div>
 
@@ -198,26 +189,23 @@
                 content: `<p>Казань, появился лайнап VK Fest 2026! На фестивале выступят Татьяна Куртукова, группа «Сироткин», Ришат Тухватуллин, Дора, Zivert. И это только первый анонс — список артистов ещё будет пополняться 😍<br><br>В этом году фестиваль вернётся в столицу Татарстана 7 июня — встречаемся у Центра семьи «Казан». На территории гостей будут ждать несколько музыкальных сцен, выступления локальных исполнителей, автограф-сессии с блогерами, конкурсы, розыгрыши и активности для всей семьи. <br><br>На VK Fest каждый сможет встретить исполнителя по душе — приходите 💙<br>Билеты: vkfest.ru</p>`
             }, 
             {
-                id: 5, // دەبێت ژمارەکە یەکێک گەورەتر بێت لە کۆتا هەواڵ (بۆ نموونە ئەگەر پێشوو ٢ بوو، ئەمە بکە ٣)
+                id: 5,
                 title: "Татьяна Куртукова рассказала «Дорожному радио», что она очень популярна в Индии",
-                date: "30 марта 2026", // بەرواری هەواڵەکە
-                location: "ناوی شوێنەکە (ئەگەر بۆنە و کۆنسێرتە، ئەگەرنا بەتاڵی جێبهێڵە)",
+                date: "30 марта 2026",
+                location: "Интервью",
                 image: "https://i.postimg.cc/t4VcdsvF/yex9HLemzz34j-WXGF5p-Vcokjp-OTagy-QP2QZw-Ft9ql3fl-Th6f31p-WEp8OZem7SLZ.jpg", 
-                excerpt: "Татьяна Куртукова высказалась о разделении своих песен на жанры поп и фолк, отметив неожиданный интерес к её творчеству в Индии. Певица подчеркнула, что её музыка стирает границы между традиционным фольклором и современной эстрадой.",
-                content: "<p>Татьяна Куртукова рассказала, что ее творчество неожиданно заметили в Индии👇Певица призналась, что о зарубежных турах пока говорить рано, но интерес к ее песням в соцсетях уже стал для нее приятным сюрпризом.«Если верить соцсетям, я весьма популярна в Индии», – отметила Татьяна. Артистка также добавила, что не делит свои песни на «народные» и «эстрадные», а главное для нее — искренность и бережное отношение к музыке.<p>             
-             
-},
-            
-            
+                excerpt: "Татьяна Куртукова высказалась о разделении своих песен на жанры поп и фолк, отметив неожиданный интерес к её творчеству в Индии.",
+                content: "<p>Татьяна Куртукова рассказала, что ее творчество неожиданно заметили в Индии👇 Певица призналась, что о зарубежных турах пока говорить рано, но интерес к ее песням в соцсетях уже стал для нее приятным сюрпризом. «Если верить соцсетям, я весьма популярна в Индии», – отметила Татьяна. Артистка также добавила, что не делит свои песни на «народные» и «эстрадные», а главное для нее — искренность и бережное отношение к музыке.</p>"
+            }
         ];
 
-        function renderNews() {
+        function renderNews(filteredData = newsData) {
             const container = document.getElementById("news-list-container");
             if(!container) return;
             container.innerHTML = "";
             const now = new Date();
 
-            newsData.forEach(news => {
+            filteredData.forEach(news => {
                 if (news.expireDate && now >= new Date(news.expireDate)) return;
                 const card = document.createElement("div");
                 card.className = "news-card";
@@ -238,16 +226,23 @@
             });
         }
 
-        // ئەم بەشە گرنگە بۆ ئەوەی لۆدینگەکە جێگیر بێت و دوای ٣ چرکە هەر لابرێت
+        function filterNews() {
+            const searchTerm = document.getElementById("newsSearch").value.toLowerCase();
+            const filtered = newsData.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) || 
+                news.excerpt.toLowerCase().includes(searchTerm)
+            );
+            renderNews(filtered);
+        }
+
         setTimeout(() => {
             const loader = document.getElementById("loader-wrapper");
             if (loader) {
                 loader.classList.add("loader-hidden");
                 setTimeout(() => { loader.style.display = "none"; }, 600);
             }
-        }, 3000); 
+        }, 1500); 
 
-        // ئەمەیان تەنها ناوەڕۆکەکە نیشان دەدات کاتێک لاپەڕەکە ئامادە بوو
         window.addEventListener("load", () => {
             renderNews();
         });
@@ -256,7 +251,7 @@
             const article = newsData.find(n => n.id === id);
             if (!article) return;
             document.getElementById("news-list-container").style.display = "none";
-            document.getElementById("filters").style.display = "none";
+            document.getElementById("search-area").style.display = "none";
             document.getElementById("art-img").src = article.image;
             document.getElementById("art-title").innerText = article.title;
             document.getElementById("art-meta").innerHTML = `<span><i class="far fa-calendar-alt"></i> ${article.date}</span> &nbsp;&nbsp; <span><i class="fas fa-map-marker-alt"></i> ${article.location}</span>`;
@@ -268,30 +263,14 @@
         function closeArticle() {
             document.getElementById("article-view").style.display = "none";
             document.getElementById("news-list-container").style.display = "block";
-            document.getElementById("filters").style.display = "block";
+            document.getElementById("search-area").style.display = "block";
         }
 
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
         }
-
-        function showCategory(cat, btn) {
-            const newsList = document.getElementById("news-list-container");
-            const tgFeed = document.getElementById("telegram-feed");
-            const filterBtns = document.querySelectorAll(".filter-btn");
-            filterBtns.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-
-            if(cat === 'telegram') {
-                newsList.style.display = "none";
-                tgFeed.style.display = "block";
-            } else {
-                newsList.style.display = "block";
-                tgFeed.style.display = "none";
-                renderNews();
-            }
-        }
     </script>
 </body>
+</html>
 </html>
