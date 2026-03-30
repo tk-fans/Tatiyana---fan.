@@ -233,7 +233,7 @@
             }
         ];
 
-        function renderNews(filteredData = newsData) {
+                function renderNews(filteredData = newsData) {
             const container = document.getElementById("news-list-container");
             if(!container) return;
             container.innerHTML = "";
@@ -269,22 +269,20 @@
             renderNews(filtered);
         }
 
-    
-    document.addEventListener("DOMContentLoaded", function() {
-        var loader = document.getElementById("loader-wrapper");
-        if (loader) {
-            setTimeout(function() {
-                loader.style.transition = "opacity 0.8s ease";
-                loader.style.opacity = "0";
+        // --- لێرەدا کێشەکە هەبوو، ئێستا چاککراوە ---
+        document.addEventListener("DOMContentLoaded", function() {
+            var loader = document.getElementById("loader-wrapper");
+            if (loader) {
                 setTimeout(function() {
-                    loader.style.display = "none";
-                }, 800);
-            }, 3000); 
-        }
-    
+                    loader.style.transition = "opacity 0.8s ease";
+                    loader.style.opacity = "0";
+                    setTimeout(function() {
+                        loader.style.display = "none";
+                    }, 800);
+                }, 3000); 
+            }
+        }); // لێرەدا کەوانەکان کەم بوون و چاککراون
 
-
-      
         function openArticle(id) {
             const article = newsData.find(n => n.id === id);
             if (!article) return;
@@ -310,5 +308,4 @@
         }
     </script>
 </body>
-</html>
 </html>
