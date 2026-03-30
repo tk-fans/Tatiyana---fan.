@@ -17,14 +17,46 @@
     <style>
         /* --- Loader Styling --- */
         #loader-wrapper {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #1a0500; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.6s ease;
-        }
-        .loader-circle { width: 60px; height: 60px; border: 5px solid rgba(212, 175, 55, 0.1); border-top: 5px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .loader-hidden { opacity: 0; pointer-events: none; }
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #1a0500; /* ڕەنگی قاوەیی تۆخ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.elegant-loader {
+    width: 80px; height: 80px;
+    position: relative;
+}
+
+.elegant-loader:before, .elegant-loader:after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: #d4af37;
+    opacity: 0.6;
+    animation: pulse-gold 2s infinite ease-in-out;
+}
+
+.elegant-loader:after { animation-delay: -1s; }
+
+@keyframes pulse-gold {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ئەم کلاسە بۆ شاردنەوەی لۆدینگەکەیە */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
@@ -100,7 +132,9 @@
 </head>
 <body>
 
-    <div id="loader-wrapper"><div class="loader-circle"></div></div>
+    <div id="loader-wrapper">
+    <div class="elegant-loader"></div>
+</div>
 
     <div class="menu-icon" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -235,16 +269,21 @@
             renderNews(filtered);
         }
 
-        setTimeout(() => {
-            const loader = document.getElementById("loader-wrapper");
-            if (loader) {
-                loader.classList.add("loader-hidden");
-                setTimeout(() => { loader.style.display = "none"; }, 600);
-            }
-        }, 1500); 
+       <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var loader = document.getElementById("loader-wrapper");
+        if (loader) {
+            setTimeout(function() {
+                loader.style.transition = "opacity 0.8s ease";
+                loader.style.opacity = "0";
+                setTimeout(function() {
+                    loader.style.display = "none";
+                }, 800);
+            }, 3000); 
+        }
+    });
 
-        window.addEventListener("load", () => {
-            renderNews();
+
         });
 
         function openArticle(id) {
