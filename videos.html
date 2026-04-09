@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="eh6CbhtjFX36PtcVnQkHxMmhhQpQUdR93iUdStEUfY0" />
-
     <title>Видео — Официальный сайт поклонников Татьяны Куртуковой</title> 
 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
-
-    <meta property="og:title" content="Видео — Официальный сайт поклонников Татьяны Куртуковой">
-    <meta property="og:description" content="Смотрите последние видео-клипы и записи живых выступлений Татьяны Куртуковой онлайн.">
-    <meta property="og:image" content="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
-    <meta property="og:type" content="website">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* --- Loader Logic --- */
-       #loader-wrapper {
+        /* --- Loader Force Hide --- */
+        #loader-wrapper {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -26,7 +19,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s;
+            transition: opacity 0.5s ease;
         }
 
         .elegant-loader {
@@ -52,6 +45,7 @@
             100% { transform: scale(1.5); opacity: 0; }
         }
 
+        /* --- Page Styles --- */
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover; background-attachment: fixed; background-position: center;
@@ -59,30 +53,24 @@
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
-        a, button, .filter-btn { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
-
-        /* --- Side Menu --- */
         .menu-icon {
             position: fixed; top: 20px; left: 20px;
             font-size: 24px; color: #d4af37; cursor: pointer;
             z-index: 1100; background: rgba(26, 5, 0, 0.8);
             padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
         }
+
         .side-menu {
-            position: fixed; top: 0; left: -50%; width: 50%; height: 100%;
+            position: fixed; top: 0; left: -100%; width: 280px; height: 100%;
             background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
-            z-index: 1200; transition: 0.5s; overflow-x: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1200; transition: 0.4s; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .side-menu.active { left: 0; }
         .menu-links a { display: block; padding: 15px; text-decoration: none; font-size: 1.2rem; color: #d4af37; font-weight: bold; transition: 0.3s; }
-        .menu-links a:hover, .menu-links a.active { color: #ff4d4d; transform: scale(1.1); }
-        .close-btn-menu { position: absolute; top: 20px; right: 25px; font-size: 36px; color: #d4af37; cursor: pointer; }
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1150; }
         .menu-overlay.active { display: block; }
 
-        /* --- Content --- */
-        .main-content { padding: 80px 20px 60px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
+        .main-content { padding: 80px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
         h1 { font-size: 3rem; color: #d4af37; margin-bottom: 10px; }
         
         #video-count {
@@ -98,16 +86,15 @@
         .filter-container { margin-bottom: 40px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .filter-btn {
             background: rgba(212, 175, 55, 0.05); border: 1px solid #d4af37; color: #d4af37;
-            padding: 8px 20px; border-radius: 25px; font-weight: bold; transition: 0.3s;
+            padding: 8px 20px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s;
         }
-        .filter-btn.active, .filter-btn:hover { background: #d4af37; color: #1a0500; }
+        .filter-btn.active { background: #d4af37; color: #1a0500; }
 
         .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .video-card {
             background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 15px;
             padding: 15px; transition: 0.4s; backdrop-filter: blur(5px);
         }
-        .video-card:hover { transform: translateY(-8px); border-color: #d4af37; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
         .video-card.hidden { display: none; }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
@@ -115,18 +102,19 @@
         
         h3 { color: #d4af37; margin: 15px 0; font-size: 1rem; height: 40px; overflow: hidden; }
 
-        /* --- Fullscreen Logo & Button --- */
+        /* Fullscreen Watermark */
         .video-overlay-text {
             position: absolute; top: 25px; right: 25px;
-            color: rgba(212, 175, 55, 0.8); font-size: 22px; font-weight: bold; text-align: center;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9); pointer-events: none; z-index: 2147483647; display: none; 
+            color: rgba(212, 175, 55, 0.85); font-size: 22px; font-weight: bold; text-align: center;
+            text-shadow: 2px 2px 8px #000; pointer-events: none; z-index: 99999; display: none; 
         }
-        .video-container:fullscreen .video-overlay-text, .video-container:-webkit-full-screen .video-overlay-text { display: block; }
+        .video-container:fullscreen .video-overlay-text, 
+        .video-container:-webkit-full-screen .video-overlay-text { display: block; }
 
         .custom-fs-btn {
             position: absolute; top: 10px; left: 10px;
             background: rgba(26, 5, 0, 0.85); border: 1px solid #d4af37; color: #d4af37;
-            padding: 8px 15px; border-radius: 8px; z-index: 10; font-size: 13px; font-weight: bold;
+            padding: 6px 12px; border-radius: 6px; z-index: 10; font-size: 12px; cursor: pointer;
             opacity: 0; transition: 0.3s;
         }
         .video-container:hover .custom-fs-btn { opacity: 1; }
@@ -134,11 +122,25 @@
         .back-to-top {
             position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8);
             color: #d4af37; border: 1px solid #d4af37; width: 45px; height: 45px;
-            border-radius: 50%; display: none; z-index: 1500;
+            border-radius: 50%; display: none; cursor: pointer;
         }
 
         footer { padding: 40px; text-align: center; border-top: 1px solid #d4af37; background: rgba(0,0,0,0.8); margin-top: 50px;}
     </style>
+
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById("loader-wrapper");
+            if(loader) {
+                loader.style.opacity = "0";
+                setTimeout(() => { loader.style.display = "none"; }, 500);
+            }
+        }
+        // چاوەڕێی ڤیدیۆکان مەکە، هەر کە پەیکەری سایتەکە ئامادە بوو لۆدینگەکە لابە
+        document.addEventListener("DOMContentLoaded", hideLoader);
+        // وەک زەمانەت، دوای ٢ چرکە هەر لایبەرە
+        setTimeout(hideLoader, 2000);
+    </script>
 </head>
 <body>
 
@@ -146,28 +148,24 @@
         <div class="elegant-loader"></div>
     </div>
 
-    <div class="menu-icon" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
+    <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 
     <div id="sideMenu" class="side-menu">
-        <div class="close-btn-menu" onclick="toggleMenu()">&times;</div>
         <div class="menu-links">
             <a href="index.html">Главная</a>
             <a href="gallery.html">Галерея</a>
             <a href="news.html">Новости</a>
             <a href="videos.html" class="active">Видео</a> 
             <a href="quiz.html">Квиз</a>
-            <a href="about.html">О нас</a>
-            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 20px auto;">
-            <a href="ask.html" style="color: #FFD700;"><i class="fas fa-robot"></i> AI Bot</a>
+            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 10px 0;">
+            <a href="ask.html" style="color: #FFD700;">AI Bot</a>
         </div>
     </div>
     <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
     <div class="main-content">
         <h1>Видео</h1> 
-        <p id="video-count">Загрузка...</p>
+        <p id="video-count">Всего видео: 40</p>
 
         <input type="text" id="videoSearch" class="search-box" placeholder="Поиск видео..." onkeyup="applyFilters()">
 
@@ -179,8 +177,8 @@
         </div>
 
         <div class="video-grid" id="mainGrid">
-            <div class="video-card songs"><h3>Ромашка василёк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Матушка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs" loading="lazy"></iframe></div></div>
+            <div class="video-card songs"><h3>Матушка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM" loading="lazy"></iframe></div></div>
+            <div class="video-card songs"><h3>Ромашка Василёк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs" loading="lazy"></iframe></div></div>
             <div class="video-card songs"><h3>Одного</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk" loading="lazy"></iframe></div></div>
             <div class="video-card songs"><h3>Наливное яблочко</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us" loading="lazy"></iframe></div></div>
             <div class="video-card songs"><h3>Ты родная мне</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc" loading="lazy"></iframe></div></div>
@@ -217,34 +215,19 @@
             <div class="video-card podcasts"><h3>Дорожное радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/lDn3s8xxn7Y" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts"><h3>Новогоднее такси</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/e-qktmtMA-I" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts"><h3>Детское Радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8t6Jq932lLw" loading="lazy"></iframe></div></div> 
-            <div class="video-card live"><h3>Русская дорога</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-207836019&id=456245144&hd=2"></iframe></div></div>
-            <div class="video-card live"><h3>посвященного 10 летию войск национальной гвардии</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-228878112&id=456241986&start=136"></iframe></div></div>
+            <div class="video-card live"><h3>Русская дорога (VK)</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-207836019&id=456245144&hd=2"></iframe></div></div>
+            <div class="video-card live"><h3>10 лет Росгвардии</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-228878112&id=456241986&start=136"></iframe></div></div>
         </div> 
     </div>
 
     <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <footer>
-        <div class="social-icons" style="margin-bottom: 20px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan" target="_blank" style="color: #d4af37; font-size: 30px; margin: 0 15px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@ts_makeeva_fan" target="_blank" style="color: #d4af37; font-size: 30px; margin: 0 15px;"><i class="fab fa-youtube"></i></a>
-        </div>
         <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
-        // --- 1. لادانی لۆدینگ بە گەرەنتی ---
-        function hideLoader() {
-            const loader = document.getElementById("loader-wrapper");
-            if (loader) {
-                loader.style.opacity = "0";
-                setTimeout(() => loader.style.display = "none", 800);
-            }
-        }
-        window.addEventListener('load', hideLoader);
-        setTimeout(hideLoader, 3000); 
-
-        // --- 2. مینیو و فلتەرەکان ---
+        // --- 1. مینیو و فلتەرەکان ---
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
@@ -275,17 +258,18 @@
             document.getElementById('video-count').innerText = "Всего видео: " + visible;
         }
 
-        // --- 3. سیستەمی لۆگۆ و فول سکرین ---
+        // --- 2. سیستەمی لۆگۆ و فول سکرین ---
         document.addEventListener("DOMContentLoaded", () => {
-            updateVideoCount();
             const videoContainers = document.querySelectorAll('.video-container');
             
             videoContainers.forEach(container => {
+                // دروستکردنی لۆگۆ
                 const logoText = document.createElement('div');
                 logoText.className = 'video-overlay-text';
                 logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
                 container.appendChild(logoText);
                 
+                // دروستکردنی دوگمەی فول سکرین
                 const fsBtn = document.createElement('button');
                 fsBtn.className = 'custom-fs-btn';
                 fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
@@ -293,4 +277,20 @@
                 fsBtn.onclick = (e) => {
                     e.stopPropagation();
                     if (!document.fullscreenElement) {
-                        if (container.r
+                        if (container.requestFullscreen) container.requestFullscreen();
+                        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+                    } else {
+                        if (document.exitFullscreen) document.exitFullscreen();
+                    }
+                };
+                container.appendChild(fsBtn);
+            });
+        });
+
+        // گەڕانەوە بۆ سەرەوە
+        const btt = document.getElementById("backToTop");
+        window.onscroll = () => btt.style.display = (window.scrollY > 400) ? "block" : "none";
+        btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    </script>
+</body>
+</html>
